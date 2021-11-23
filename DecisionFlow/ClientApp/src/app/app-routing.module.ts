@@ -18,8 +18,19 @@ import { IconsModule } from './icons/icons.module';
 import { DxTabsModule, DxSelectBoxModule, DxButtonModule, DxFileUploaderModule, DxTextBoxModule, DxTemplateModule, DxDropDownBoxModule, DxListModule} from 'devextreme-angular';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './pages/admin/admin.component';
+import { ApplicationPaths } from 'src/api-authorization/api-authorization.constants';
+import { LoginComponent } from 'src/api-authorization/login/login.component';
+import { LogoutComponent } from 'src/api-authorization/logout/logout.component';
 
 const routes: Routes = [
+  { path: ApplicationPaths.Register, component: LoginComponent },
+  { path: ApplicationPaths.Profile, component: LoginComponent },
+  { path: ApplicationPaths.Login, component: LoginComponent },
+  { path: ApplicationPaths.LoginFailed, component: LoginComponent },
+  { path: ApplicationPaths.LoginCallback, component: LoginComponent },
+  { path: ApplicationPaths.LogOut, component: LogoutComponent },
+  { path: ApplicationPaths.LoggedOut, component: LogoutComponent },
+  { path: ApplicationPaths.LogOutCallback, component: LogoutComponent },
   {
     path: 'tasks',
     component: TasksComponent,

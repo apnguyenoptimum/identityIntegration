@@ -1,4 +1,4 @@
-export const ApplicationName = 'AngularIdentity';
+export const ApplicationName = 'DecisionFlow';
 
 export const ReturnUrlType = 'returnUrl';
 
