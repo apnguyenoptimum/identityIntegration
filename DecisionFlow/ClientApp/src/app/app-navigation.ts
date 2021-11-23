@@ -6,6 +6,11 @@ export const navigation = [
     path: '/home',
     icon: 'home'
   },
+  {
+    text: 'Fetch',
+    path: '/fetch-data',
+    icon: 'home'
+  },
   // {
   //   text: 'Examples',
   //   icon: 'folder',

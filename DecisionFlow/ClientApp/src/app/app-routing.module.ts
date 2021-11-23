@@ -21,6 +21,11 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ApplicationPaths } from 'src/api-authorization/api-authorization.constants';
 import { LoginComponent } from 'src/api-authorization/login/login.component';
 import { LogoutComponent } from 'src/api-authorization/logout/logout.component';
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
+import { FetchTestComponent } from './fetch-test/fetch-test.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 
 const routes: Routes = [
   { path: ApplicationPaths.Register, component: LoginComponent },
@@ -31,6 +36,8 @@ const routes: Routes = [
   { path: ApplicationPaths.LogOut, component: LogoutComponent },
   { path: ApplicationPaths.LoggedOut, component: LogoutComponent },
   { path: ApplicationPaths.LogOutCallback, component: LogoutComponent },
+  { path: 'fetch-data', component: FetchTestComponent, canActivate: [AuthorizeGuard] },
+  { path: 'weatherforecast', component: FetchTestComponent, canActivate: [AuthorizeGuard]   },
   {
     path: 'tasks',
     component: TasksComponent,
@@ -132,8 +139,8 @@ const routes: Routes = [
     DxDropDownBoxModule, 
     DxListModule
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService,  { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, TasksComponent]
+  declarations: [HomeComponent, ProfileComponent, TasksComponent, FetchDataComponent]
 })
 export class AppRoutingModule { }

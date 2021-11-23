@@ -45,7 +45,7 @@ export class AuthorizeService {
   private userSubject: BehaviorSubject<IUser | null | any> = new BehaviorSubject(null);
 
   public isAuthenticated(): Observable<boolean> {
-    console.log(this.getUser(), 'get user')
+    this.getUser().pipe(map(u => console.log(u, '----- > !!', !!u)))
     return this.getUser().pipe(map(u => !!u));
   }
 
