@@ -1,0 +1,127 @@
+<div class="admin-container">
+    <div class="roles container">
+        <h2 class="title">Roles</h2>
+        <div class="chart">
+            <dx-data-grid
+            id="gridContainer"
+            [dataSource]="roles"
+            keyExpr="ID"
+            [showBorders]="true"
+            [focusedRowEnabled]="true">
+            <dxo-editing
+                [allowUpdating]="true"
+                [allowDeleting]="true"
+                [selectTextOnEditStart]="true"
+                [allowAdding]="true"
+                [useIcons]="true">
+            </dxo-editing>
+    
+            <dxo-header-filter [visible]="true">
+            </dxo-header-filter>
+    
+            <dxo-filter-panel [visible]="true">
+            </dxo-filter-panel>
+    
+            <!-- <dxo-filter-row [visible]="true">
+            </dxo-filter-row> -->
+    
+            <dxo-paging [pageSize]="10">
+            </dxo-paging>
+    
+            <dxo-pager
+                [allowedPageSizes]="[5, 10]"
+                [showPageSizeSelector]="true"
+                [showNavigationButtons]="true">
+            </dxo-pager>
+    
+            <dxi-column dataField="Role">
+            </dxi-column>
+    
+            <dxi-column dataField="ReadAccess">
+            </dxi-column>
+    
+            <dxi-column dataField="WriteAccess">
+            </dxi-column>
+
+            <dxi-column dataField="ExplodedAccess">
+            </dxi-column>
+
+            <dxi-column dataField="SpfAccess">
+            </dxi-column>
+
+            <dxi-column dataField="MapAccess">
+            </dxi-column>
+
+            <dxi-column dataField="DeliverablesAccess">
+            </dxi-column>
+
+            <dxi-column dataField="TrafficMannagerAccess">
+            </dxi-column>
+    
+        </dx-data-grid>
+        </div>
+    </div>
+    <div class="users container">
+        <h2 class="title">Users</h2>
+        <div class="chart">
+            <dx-data-grid
+        id="gridContainer"
+        [dataSource]="employees"
+        keyExpr="ID"
+        [showBorders]="true"
+        [focusedRowEnabled]="true">
+
+        <dxo-editing
+            [allowUpdating]="true"
+            [allowDeleting]="true"
+            [selectTextOnEditStart]="true"
+            [allowAdding]="true"
+            [useIcons]="true">
+        </dxo-editing>
+
+        <dxo-header-filter [visible]="true">
+        </dxo-header-filter>
+
+        <dxo-filter-panel [visible]="true">
+        </dxo-filter-panel>
+
+        <dxo-filter-row [visible]="true">
+        </dxo-filter-row>
+
+        <dxo-paging [pageSize]="10">
+        </dxo-paging>
+
+        <dxo-pager
+            [allowedPageSizes]="[5, 10]"
+            [showPageSizeSelector]="true"
+            [showNavigationButtons]="true">
+        </dxo-pager>
+
+        <dxi-column dataField="FirstName">
+        </dxi-column>
+
+        <dxi-column dataField="LastName">
+        </dxi-column>
+
+        <dxi-column dataField="StateID"
+            caption="Role">
+            <dxo-lookup
+                [dataSource]="roles"
+                valueExpr="ID"
+                displayExpr="Role">
+            </dxo-lookup>
+        </dxi-column>
+
+    </dx-data-grid>
+
+        </div>
+    </div>
+    <div class="container filters">
+      
+        <h2 class="title">Filters</h2>
+        <div class="chart">
+            <app-custom-filters-grid></app-custom-filters-grid>
+        </div>
+     
+    </div>
+</div>

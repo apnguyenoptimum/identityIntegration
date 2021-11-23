@@ -1,0 +1,141 @@
+<dx-data-grid
+    id="gridContainer"
+    [dataSource]="materialDataSource"
+    keyExpr="ID"
+    [allowColumnReordering]="true"
+    [allowColumnResizing]="true"
+    [columnAutoWidth]="true"
+    [showBorders]="true">
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+    <dxo-paging [pageSize]="10"> </dxo-paging>
+    <dxo-pager
+      [visible]="true"
+      [allowedPageSizes]="allowedPageSizes"
+      [displayMode]="displayMode"
+      [showPageSizeSelector]="showPageSizeSelector"
+      [showInfo]="showInfo"
+      [showNavigationButtons]="showNavButtons"
+    >
+    </dxo-pager>
+
+    <dxi-column cellTemplate="makeSurplus" alignment="right" caption="Make"dataField="makeConstraint"></dxi-column>
+    <dxi-column cellTemplate="buySurplus" alignment="right" caption="Buy"dataField="buyConstraint"></dxi-column>
+    <dxi-column alignment="right" caption="Deliverable Part Number"dataField="deliverablePartNumber"></dxi-column>
+    <dxi-column alignment="right" caption="Description"dataField="description"></dxi-column>
+    <dxi-column cellTemplate="lineChart" alignment="right" caption="Weekly Inventory Trend ($)"dataField="targetInventoryCost"></dxi-column>
+    <dxi-column cellTemplate="targetInventory" alignment="right" caption="Target Inventory ($)"dataField="targetInventoryCost"></dxi-column>
+    <dxi-column cellTemplate="actualInventory" alignment="right" caption="Actual Inventory ($)"dataField="currentInventoryCost"></dxi-column>
+    <dxi-column cellTemplate="excessInventory" alignment="right" caption="Excess Inventory ($)"dataField="excessInventoryCost"></dxi-column>
+    <dxi-column cellTemplate="projectedInventory" alignment="right" caption="Projected Inventory ($)" dataField="projectedInventoryCost"></dxi-column>
+    <dxi-column cellTemplate="gapInventory" alignment="right" caption="Gap Inventory ($)" dataField="gapInventoryCost"></dxi-column>
+    <dxi-column alignment="right" caption="Target Inventory (Units)" dataField="targetInventoryUnit" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Planner" dataField="planner" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="targetStock" alignment="right" caption="Target Stock ($)" dataField="rollupTargetStockCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="targetWIP" alignment="right" caption="Target WIP ($)" dataField="rollupTargetWIPCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="targeInventoryCost" alignment="right" caption="Target WIP ($)" dataField="rollupTargetInventoryCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="actualWIP" alignment="right" caption="Actual WIP ($)" dataField="rollupCurrentWIPCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="actualStock" alignment="right" caption="Actual Stock ($)" dataField="rollupCurrentStockCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="actualInventory" alignment="right" caption="Actual Inventory ($)" dataField="rollupCurrentInventoryCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="delta" alignment="right" caption="Delta Inventory to Target" dataField="rollupDeltaInventoryToTarget" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="projectedStock" alignment="right" caption="Projected Stock($)" dataField="projectedStockCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="projectedWIP" alignment="right" caption="Projected WIP($)" dataField="projectedWIPCost" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="cost" alignment="right" caption="Deliverable Unit Cost" dataField="cost" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Lead Time (Weeks)" dataField="leadTimeWeeks" [visible]="false"></dxi-column>
+    
+
+    <div class="circle-container" *dxTemplate="let data of 'lineChart'">
+        <div id="chart-demo">
+            <dx-chart
+              palette="violet"
+              [dataSource]="architecturesInfo"
+              title=""
+            >
+            <dxo-size
+            [height]="30"
+            [width]="230">
+            </dxo-size>
+              <dxi-series valueField="smp" name="SMP"></dxi-series>
+              <dxi-series valueField="mmp" name="MMP"></dxi-series>
+              <dxi-series valueField="cnstl" name="Cnstl"></dxi-series>
+              <dxi-series valueField="cluster" name="Cluster"></dxi-series>
+              <dxo-common-series-settings
+                #seriesSettings
+                argumentField="year"
+                [type]="'spline'"
+              >
+              </dxo-common-series-settings>
+        
+              <dxo-common-axis-settings>
+                <dxo-grid [visible]="true"></dxo-grid>
+              </dxo-common-axis-settings>
+              <!-- <dxo-legend verticalAlignment="top" horizontalAlignment="right">
+              </dxo-legend> -->
+              <dxo-argument-axis [allowDecimals]="false" [axisDivisionFactor]="60">
+                <dxo-label>
+                  <dxo-format type="decimal"></dxo-format>
+                </dxo-label>
+              </dxo-argument-axis>
+              <!-- <dxo-export [enabled]="true"></dxo-export> -->
+              <dxo-tooltip [enabled]="true"></dxo-tooltip>
+            </dx-chart>
+            
+          </div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'makeSurplus'">
+        <div class="circle"></div>
+        <div>{{data.data.makeConstraint}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'buySurplus'">
+        <div class="circle"></div>
+        <div>{{data.data.buyConstraint}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'cost'">
+        <div *ngIf="data.data.cost != null">{{math.ceil(data.data.cost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'projectedWIP'">
+        <div *ngIf="data.data.projectedWIPCost != null">{{math.ceil(data.data.projectedWIPCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'projectedStock'">
+        <div *ngIf="data.data.projectedStockCost != null">{{math.ceil(data.data.projectedStockCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'targetInventory'">
+        <div *ngIf="data.data.targetInventoryCost != null">{{math.ceil(data.data.targetInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'actualInventory'">
+        <div *ngIf="data.data.currentInventoryCost != null">{{math.ceil(data.data.currentInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'excessInventory'">
+        <div *ngIf="data.data.excessInventoryCost != null">{{math.ceil(data.data.excessInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'projectedInventory'">
+        <div *ngIf="data.data.projectedInventoryCost != null">{{math.ceil(data.data.projectedInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'gapInventory'">
+        <div *ngIf="data.data.gapInventoryCost != null">{{math.ceil(data.data.gapInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'targetStock'">
+        <div *ngIf="data.data.rollupTargetStockCost != null">{{math.ceil(data.data.rollupTargetStockCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'targetWIP'">
+        <div *ngIf="data.data.rollupTargetWIPCost != null">{{math.ceil(data.data.rollupTargetWIPCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'targeInventoryCost'">
+        <div *ngIf="data.data.rollupTargetInventoryCost != null">{{math.ceil(data.data.rollupTargetInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'actualWIP'">
+        <div *ngIf="data.data.rollupCurrentWIPCost != null">{{math.ceil(data.data.rollupCurrentWIPCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'actualStock'">
+        <div *ngIf="data.data.rollupCurrentStockCost != null">{{math.ceil(data.data.rollupCurrentStockCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'actualInventory'">
+        <div *ngIf="data.data.rollupCurrentInventoryCost != null">{{math.ceil(data.data.rollupCurrentInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    <div class="circle-container" *dxTemplate="let data of 'delta'">
+        <div *ngIf="data.data.rollupDeltaInventoryToTarget != null">{{math.ceil(data.data.rollupDeltaInventoryToTarget).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+    </div>
+    
+</dx-data-grid>

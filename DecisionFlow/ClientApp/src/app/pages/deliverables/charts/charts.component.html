@@ -1,0 +1,21 @@
+<div class="charts-container">
+    <!-- <app-filter></app-filter> -->
+    <dx-tabs [dataSource]="longtabs"></dx-tabs>
+    <div class="top-charts">
+        <div class="chart">
+            <app-area-chart></app-area-chart>
+        </div>
+       <div class="chart">
+        <app-bar-chart></app-bar-chart>
+       </div>
+       
+    </div>
+    <div class="bottom-charts">
+        <div class="chart">
+            <app-mixed-chat></app-mixed-chat>
+        </div>
+        <div class="chart">
+            <app-stacked-chart></app-stacked-chart>
+        </div>
+    </div>
+</div>

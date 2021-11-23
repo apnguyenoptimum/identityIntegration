@@ -1,0 +1,38 @@
+<ng-content></ng-content>
+
+<div class="menu-container">
+  <!-- <div [class.transition]="_compactMode" class="company-container">
+    <app-icon [icon]="'testlogo'"></app-icon>
+    <div class="text-container">
+      <div class="company-text">Apple</div>
+      <div class="footer-text">Palo Alto, California</div>
+    </div>
+  </div> -->
+  <div class="sep-container">
+    <div  [class.transition]="_compactMode" class="separator"></div>
+  </div>
+  <dx-tooltip [target]="target" [(visible)]="isVisible && _compactMode">  
+    <dxo-position
+    my="left"
+    at="right"
+    offset="-190 0"
+    of="#target">
+</dxo-position>
+    <div *dxTemplate="let data = data of 'content'">  
+      {{tooltipContent}}
+    </div>  
+  </dx-tooltip>  
+  <dx-tree-view
+  (mouseenter)="toggleDefault()" 
+  (mouseleave)="toggleDefault()" 
+    [items]="items"
+    keyExpr="path"
+    selectionMode="single"
+    [focusStateEnabled]="false"
+    expandEvent="click"
+    (onItemClick)="onItemClick($event)"
+    (onContentReady)="onContentReady($event)" 
+    width="100%">
+  </dx-tree-view>
+  
+</div>

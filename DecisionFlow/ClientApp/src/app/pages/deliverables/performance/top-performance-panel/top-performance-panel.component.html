@@ -1,0 +1,96 @@
+<div class="outer-container">
+    <div class="top-panel-container">
+        <div class="outer">
+            <div class="totals">
+                <div class="totals-text">
+                    Totals
+                </div>
+                <div class="toggles">
+                    <div class="toggle">
+                        <div 
+                        [class.selected]="isUnit"
+                        class="unit"
+                        (click)="toggleUnit()"
+                         >
+                            <div>Unit</div>
+                        </div>
+                        <div
+                        [class.selected]="!isUnit" 
+                        class="unit money"
+                        (click)="toggleDollar()"
+                        >
+                            <div>$</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inners-container">
+                <div class="inner mid">
+                    <div class="KPI">
+                        <div class="buy">
+                            <div class="mid-text">Target</div>
+                            <div class="kpi-values">
+                                <div class="numeric">$351,128</div>
+                                <div class="percentage">
+                                    <app-icon [icon]="'up-icon'"></app-icon>12%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner mid">
+                    <div class="KPI">
+                        <div class="buy">
+                            <div class="mid-text">Actual</div>
+                            <div class="kpi-values">
+                                <div class="numeric">$351,128</div>
+                                <div class="percentage">
+                                    <app-icon [icon]="'up-icon'"></app-icon>12%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner mid">
+                    <div class="KPI">
+                        <div class="buy">
+                            <div class="mid-text">Excess</div>
+                            <div class="kpi-values">
+                                <div class="numeric">$351,128</div>
+                                <div class="percentage">
+                                    <app-icon [icon]="'up-icon'"></app-icon> 12%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner mid">
+                    <div class="KPI">
+                        <div class="buy">
+                            <div class="mid-text">Projected</div>
+                            <div class="kpi-values">
+                                <div class="numeric">$351,128</div>
+                                <div class="percentage">
+                                    <app-icon [icon]="'up-icon'"></app-icon>12%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner mid">
+                    <div class="KPI">
+                        <div class="buy">
+                            <div class="mid-text">Gap</div>
+                            <div class="kpi-values">
+                                <div class="numeric">$351,128</div>
+                                <div class="percentage">
+                                    <app-icon [icon]="'up-icon'"></app-icon> 12%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

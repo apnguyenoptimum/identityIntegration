@@ -1,0 +1,137 @@
+<div class="outer-container">
+    <div class="top-panel-container">
+        <div class="inner border">
+            <div class="title">
+                <div class="top-text"> Surplus Parts </div>
+            </div>
+            <div class="KPI">
+                <div class="buy">
+                    <div class="mid-text">Buy</div>
+                    <div class="value">{{topPanelValues.buySurplus}}</div>
+                    <a href="#">View Parts</a>
+                </div>
+                <div class="make">
+                    <div class="mid-text">Make</div>
+                    <div class="value">{{topPanelValues.makeSurplus}}</div>
+                    <a href="#">View Parts</a>
+                </div>
+            </div>
+        </div>
+        <div class="inner border">
+            <div class="title">
+                <div class="top-text">
+                    Deliverables
+                </div>
+            </div>
+            <div class="KPI">
+                <div class="buy">
+                    <div class="mid-text">Over Inventoried</div>
+                    <div class="value">{{overInventoried.overInventoried}}</div>
+                    <a 
+                    id="overInventoried"
+                    (mouseenter)="toggleInventoried()"
+                    (mouseleave)="toggleInventoried()"
+                    >View Parts</a>
+                </div>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="totals">
+                <div class="totals-text">
+                    Totals
+                </div>
+            </div>
+            <div class="inners-container">
+             
+                <div class="current-outer">
+                    <div class="container-title">Current</div>
+                    <div class="current">
+                        <div class="inner mid">
+                            <div class="KPI">
+                                <div class="buy">
+                                    <div class="mid-text">Actual</div>
+                                    <div class="kpi-values">
+                                        <div class="dollar numeric">$</div>
+                                        <div class="numeric">{{math.ceil(topPanelValues.currentInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner mid">
+                            <div class="KPI">
+                                <div class="buy">
+                                    <div class="mid-text">Excess</div>
+                                    <div class="kpi-values">
+                                        <div class="dollar numeric">$</div>
+                                        <div class="numeric">{{math.ceil(topPanelValues.excessInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                                        <div class="percentage">
+                                            <app-icon [icon]="'up-icon'"></app-icon>  {{math.ceil((topPanelValues.excessInventoryCost / topPanelValues.targetInventoryCost) * 100)}}%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+                
+
+
+
+                <div class="current-outer">
+                    <div class="container-title">{{endDate}}</div>
+                    <div class="current">
+                        <div class="inner mid">
+                            <div class="KPI">
+                                <div class="buy">
+                                    <div class="mid-text">Projected</div>
+                                    <div class="kpi-values">
+                                        <div class="dollar numeric">$</div>
+                                        <div class="numeric">{{math.ceil(topPanelValues.projectedInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner mid">
+                            <div class="KPI">
+                                <div class="buy">
+                                    <div class="mid-text">Gap</div>
+                                    <div class="kpi-values">
+                                        <div class="dollar numeric">$</div>
+                                        <div class="numeric">{{math.ceil(topPanelValues.gapInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                                        <div class="percentage">
+                                            <app-icon [icon]="'up-icon'"></app-icon> {{math.ceil((topPanelValues.gapInventoryCost / topPanelValues.targetInventoryCost) * 100)}}%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+                </div>
+                <div class="inner mid">
+                    <div class="KPI">
+                        <div class="buy">
+                            <div class="mid-text">Target</div>
+                            <div class="kpi-values">
+                                <div class="dollar numeric">$</div>
+                                <div class="numeric">{{math.ceil(topPanelValues.targetInventoryCost).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         
+            </div>
+        </div>
+    </div>
+    <dx-tooltip
+    target="#overInventoried"
+    [(visible)]="isVisible"
+    [closeOnOutsideClick]="false"
+    >
+    <div class="tooltip-title">Over Inventoried</div>
+    <div *ngFor="let item of overInventoried.overInventoriedParts ">
+        <div>{{item}}</div>
+    </div>
+  </dx-tooltip>
+</div>

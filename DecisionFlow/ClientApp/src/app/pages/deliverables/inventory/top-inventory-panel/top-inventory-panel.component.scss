@@ -1,0 +1,221 @@
+.top-panel-container {
+    display: flex;
+    width: 97%;
+    // border-top: 1px solid #cfcfcf;
+    height: 100%;
+    margin: 1%;
+    margin-right: 0%;
+    margin-left: 0%;
+    box-shadow: 0 1px 3px 1px rgb(0 0 0 / 12%), 0 1px 2px 1.5px rgb(0 0 0 / 24%);
+}
+
+.inner {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.2%;
+}
+
+.border {
+    border-right: 2px solid #cfcfcf;
+}
+
+.KPI {
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.buy {
+    margin: 4%;
+}
+
+.make {
+    margin: 4%;
+}
+
+.kpi-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.percentage {
+    font-size: 100%;
+    display: flex;
+    margin-left: 3%;
+    background-color: rgb(225 57 57 / 40%);
+    border-radius: 5px;
+    padding: 5%;
+    margin-bottom: 5%;
+    @media (max-height: 610px) {
+        font-size: 80%;
+      }
+}
+
+.outer-container {
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.top-text {
+    font-size: 170%;
+}
+
+.mid-text {
+    font-weight: 500;
+    color: #918d8d;
+}
+
+.value {
+    font-size: 120%;
+    font-weight: 900;
+}
+
+.chart {
+    text-align: center;
+}
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    width: 255%;
+    height: 100%;
+    justify-content: center;
+}
+
+.inners-container {
+    display: flex;
+    height: 75%;
+    @media (max-height: 610px) {
+        width: 65%;
+      }
+}
+
+.totals {
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    padding-bottom: 0.5%;
+    padding-left: 5%;
+    height: 25%;
+}
+
+.toggle {
+    display: flex;
+}
+
+.totals-text {
+    font-size: 180%;
+    font-weight: 600;
+}
+
+.money {
+    border-left: 1px solid #959595;
+}
+
+.dollar {
+    margin-right: 6%;
+}
+
+.unit {
+   padding-top: 10%;
+   padding-bottom: 10%;
+   display: flex;
+   justify-content: center;
+   width: 100%;
+   font-weight: 400;
+   cursor: pointer;
+   font-weight: 700;
+   &:hover {
+    background-color: #dbf0fd;
+    }
+}
+
+.selected {
+    background-color: #dbf0fd;
+    color: #007eeb;
+}
+
+.toggle {
+    border: 1px solid #959595;
+    border-radius: 3px;
+    margin-left: -155%;
+    width: 250%;
+    display: flex;
+    justify-content: center;
+}
+
+.numeric {
+    font-size: 150%;
+    font-weight: 500;
+    @media (max-height: 610px) {
+        font-size: 100%;
+      }
+}
+
+.mid {
+    margin-bottom: 1%;
+}
+
+.value {
+    font-size: 160%;
+    font-weight: 900;
+}
+
+.mid-text {
+    font-weight: 500;
+    color: #918d8d;
+}
+
+.tooltip-title{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+}
+
+.container-title {
+    text-align: center;
+    font-weight: 600;
+    // font-size: 110%;
+}
+
+.current {
+    // width: 80%;
+    display: flex;
+    width: 100%;
+    border: 3px solid #3636401f;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    color: black;
+//   background-color: #3636401f; 
+    // box-shadow: 0 1px 3px 1px rgb(0 0 0 / 12%), 0 1px 2px 1.5px rgb(0 0 0 / 24%);
+    .inner {
+        width: 100%;
+        font-size: 100%;
+    }
+}
+
+.current-outer {
+    width: 100%;
+    // border: 3px solid #3636401f;
+    margin-left: 2%;
+    margin-bottom: 2%;
+}
+

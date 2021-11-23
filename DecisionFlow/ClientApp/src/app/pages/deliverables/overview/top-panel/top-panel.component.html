@@ -1,0 +1,397 @@
+<div class="outer-container">
+    <div class="top-panel-container">
+        <div class="inner">
+            <div class="title">
+                <div class="top-text-div">Part Shortages </div>
+            </div>
+            <div class="KPI leftKPI">
+                <div class="buy">
+                    <div class="mid-text">Buy</div>
+                    <div class="value">{{sumDataObject.buyShortage}}</div>
+                    <a>View Parts</a>
+                </div>
+                <div class="make">
+                    <div class="mid-text">Make</div>
+                    <div class="value">{{sumDataObject.makeShortage}}</div>
+                    <a>View Parts</a>
+                </div>
+            </div>
+        </div>
+        <div class="inner left-border">
+            <div class="title">
+                <div  class="top-text-div">
+                    Deliverables
+                </div>
+            </div>
+            <div class="KPI leftKPI">
+                <div class="buy">
+                    <div class="mid-text">Healthy</div>
+                    <div class="value healthy">{{healthySum}}</div>
+                    <a
+                     id="healthyPart"
+                     (mouseenter)="toggleHealthy()"
+                     (mouseleave)="toggleHealthy()"
+                     >View Parts</a>
+                </div>
+                <div class="make">
+                    <div class="mid-text">Constrained</div>
+                    <div class="value constrained">{{constrainedSum}}</div>
+                    <a 
+                    id="constrainedPart"
+                    (mouseenter)="toggleConstrained()"
+                    (mouseleave)="toggleConstrained()"
+                    >View Parts</a>
+                </div>
+            </div>
+        </div>
+        <div class="inner leftMargin">
+            <div class="title">
+                <div class="top-text-div">Shipment Sum</div>
+                <!-- <div class="toggles">
+                    <div class="toggle">
+                        <div 
+                        [class.selected]="isUnit"
+                        class="unit"
+                        (click)="toggleUnit()"
+                         >
+                            <div>Unit</div>
+                        </div>
+                        <div
+                        [class.selected]="!isUnit" 
+                        class="unit money"
+                        (click)="toggleDollar()"
+                        >
+                            <div>$</div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+         
+                <div class="KPI">
+                    <div class="buy">
+                        <div class="mid-text">Target</div>
+                        <div class="kpi-values">
+                            <div class="value">
+                                <div class="dollar">$</div>
+                                <!-- <div  [class.hidden]="!isUnit" > {{ sumDataObject.target}}</div> -->
+                                <div *ngIf="sumDataObject.target != null"  > {{sumDataObject.target.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buy">
+                        <div class="mid-text">Forecast</div>
+                        <div class="kpi-values">
+                            <div class="value topMargin">
+                                <div class="dollar">$</div>
+                                <!-- <div  [class.hidden]="!isUnit" >{{ sumDataObject.forecast}}</div> -->
+                                <div *ngIf="sumDataObject.forecast != null"  >{{ sumDataObject.forecast.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="make">
+                        <div class="mid-text">Gap</div>
+                        <div class="kpi-values">
+                            <div class="value">
+                                <div class="dollar">$</div>
+                                <!-- <div  [class.hidden]="!isUnit" > {{sumDataObject.gap}}</div> -->
+                                <div *ngIf="sumDataObject.gap != null" > {{sumDataObject.gap.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="percent-div">
+                        <div [class.isNegative]="isNegative" [class.isPositive]="!isNegative" class="percentage">
+                            <app-icon *ngIf="!isNegative" [icon]="'up-icon'"></app-icon> 
+                            <app-icon *ngIf="isNegative" [icon]="'down-icon'"></app-icon>
+                            {{percentValue}}%
+                        </div>
+                    </div>
+                </div>
+        
+        </div>
+
+        <div class="inner chart-div">
+            <div class="value chart" >
+                <dx-chart  [rotated]="true"  id="chart" [dataSource]="barDataSource">
+                   
+                    <dxi-value-axis position="left"  [visualRange]="chart_visualRange">
+                    
+                      <dxi-constant-line
+                      [width]="2"
+                      [value]="target"
+                      color="black"
+                      dashStyle="dash"
+                      hatching="true"
+                    >
+                      <dxo-label  text="Target"></dxo-label>
+                    </dxi-constant-line>
+                    </dxi-value-axis>
+                    <dxi-series  color="green" valueField="actual" name="Actual"></dxi-series>
+                    <dxi-series id="projected"  color="green"   dashStyle="dash" valueField="projected" name="Projected"></dxi-series>
+                    <dxo-common-series-settings [barPadding]="0.5"    argumentField="state" type="stackedBar">
+                    </dxo-common-series-settings>
+                    <dxo-legend
+                    verticalAlignment="bottom"
+                    horizontalAlignment="left"
+                    itemTextPosition="right"
+                    position="inside"
+                    >
+                    </dxo-legend>
+                    <!-- <dxo-export [enabled]="true"></dxo-export> -->
+                    <dxo-tooltip
+                      [enabled]="true"
+                      location="edge"
+                      [customizeTooltip]="customizeTooltip"
+                    >
+                    </dxo-tooltip>
+                    <dxo-size
+                    [height]="130"
+                    [width]="chartWidth">
+                    </dxo-size>
+                
+                  </dx-chart>
+                  <div class="barTitle">{{chartTitle}} <dx-button icon="export" (onClick)="export()"> </dx-button></div>
+            </div>
+        </div>
+    </div>
+
+    <dx-tooltip
+    target="#healthyPart"
+    [(visible)]="healthyVisible"
+    [closeOnOutsideClick]="false"
+    >
+    <div class="tooltip-title">Healthy Deliverables</div>
+    <div *ngFor="let item of healthyPartsArray ">
+        <div>{{item}}</div>
+    </div>
+  </dx-tooltip>
+  <dx-tooltip
+  target="#constrainedPart"
+  [(visible)]="constrainedVisible"
+  [closeOnOutsideClick]="false"
+  >
+    <div class="tooltip-title">Constrained Deliverables</div>
+    <div *ngFor="let item of constrainedPartsArray ">
+        <div>{{item}}</div>
+    </div>
+  </dx-tooltip>
+
+</div>
+
+
+<dx-data-grid
+    id="gridContainer"
+    [dataSource]="materialDataSource"
+    keyExpr="ID"
+    [allowColumnReordering]="true"
+    [allowColumnResizing]="true"
+    [columnAutoWidth]="true"
+    [showColumnLines]="false"
+    [showRowLines]="true"
+    [showBorders]="true"
+    (onExporting)="onExporting($event)"
+    (onCellClick)="onCellClick($event)"
+    >
+    <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+    <dxo-paging [pageSize]="10"> </dxo-paging>
+    <dxo-pager
+      [visible]="true"
+      [allowedPageSizes]="allowedPageSizes"
+      [displayMode]="displayMode"
+      [showPageSizeSelector]="showPageSizeSelector"
+      [showInfo]="showInfo"
+      [showNavigationButtons]="showNavButtons"
+    >
+    </dxo-pager>
+    <dx-button text='hello'></dx-button>
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+    <dxi-column [allowExporting]="true" cellTemplate="unitCompletion"caption="Unit Short Completions" dataField="shortCompletions" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="unitShort" caption="Unit Short Shipment" dataField="shortShipment" [width]="100" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="make"  caption="Make Shortages" dataField="makePartCountCausingShortage" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="buy" caption="Buy Shortages"dataField="buyPartCountCausingShortage" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="shipmentsCompletions"  caption="Shipments/Completions (Units)" dataField="shipments" [width]="250" ></dxi-column>
+    <dxi-column cellTemplate="shipments"  caption="Shipments (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="completions"  caption="Completions (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="actualRevenue" caption="Actual Revenue ($)" dataField="actualRevenue" alignment="right"></dxi-column>
+    <dxi-column cellTemplate="projectedRevenue" caption="Projected Revenue ($)" dataField="projectedRevenue" alignment="right"></dxi-column>
+    <dxi-column cellTemplate="targetRevenue" caption="Target Revenue ($)" dataField="targetRevenue" alignment="right"></dxi-column>
+    <dxi-column cellTemplate="gapRevenue" caption="Gap Revenue ($)"dataField="gapRevenue" alignment="right"></dxi-column>
+    <dxi-column alignment="right" caption="Actual Shipments" dataField="actualShipment" [width]="205"  [width]="100" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Projected Shipments" dataField="projectedShipment" [width]="205"  [width]="100" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Target Shipments" dataField="targetShipment" [width]="205"  [width]="100" [visible]="false"></dxi-column>
+    <dxi-column alignment="right" caption="Actual Completions" dataField="actualCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
+    <dxi-column alignment="right" caption="Prejected Completions" dataField="projectedCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
+    <dxi-column alignment="right" caption="Target Completions" dataField="targetCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
+    <dxi-column alignment="right" caption="Deliverable"dataField="deliverable"></dxi-column>
+    <dxi-column alignment="right" caption="Description"dataField="description"></dxi-column>
+    <dxi-column cellTemplate="forecastRevenue" caption="Forecast Revenue ($)"dataField="forecastRevenue" alignment="right"></dxi-column>
+    <dxi-column caption="Average Unit Sold Price" dataField="averageUnitSoldPrice" [visible]="false"></dxi-column>
+    <dxi-column caption="Planner(s)" dataField="planner" [visible]="false"></dxi-column>
+    <dxi-column caption="Max Revenue ($)" dataField="maxRevenue" [visible]="false"></dxi-column>
+    <dxi-column caption="Source TYpe" dataField="sourceType" [visible]="false"></dxi-column>
+    <dxi-column caption="Current Stock" dataField="currentStock" [visible]="false"></dxi-column>
+    <dxi-column caption="Open Orders" dataField="openOrders" [visible]="false"></dxi-column>
+    <dxi-column caption="Programs" dataField="programList" [visible]="false"></dxi-column>
+    <dxi-column caption="Current/Past Due" dataField="currentDue" [visible]="false"></dxi-column>
+    <dxi-column caption="Future Due" dataField="futureDue" [visible]="false"></dxi-column>
+
+<div class="circle-container" *dxTemplate="let data of 'make'">
+  <div [class.red]="data.data.makePartCountCausingShortage < 1" class="circle"></div>
+  <div>{{data.data.makePartCountCausingShortage}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'unitShort'">
+  <div class="circle"></div>
+  <div>{{data.data.shortShipment}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'unitCompletion'">
+  <div class="circle"></div>
+  <div>{{data.data.shortCompletions}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'buy'">
+  <div class="circle"></div>
+  <div>{{data.data.buyPartCountCausingShortage}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'actualRevenue'">
+  <div *ngIf="data.data.actualRevenue != null">{{math.ceil(data.data.actualRevenue).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'projectedRevenue'">
+  <div *ngIf="data.data.projectedRevenue != null">{{math.ceil(data.data.projectedRevenue).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'targetRevenue'">
+  <div *ngIf="data.data.targetRevenue != null">{{math.ceil(data.data.targetRevenue).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'forecastRevenue'">
+  <div *ngIf="data.data.forecastRevenue != null">{{math.ceil(data.data.forecastRevenue).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'gapRevenue'">
+  <div *ngIf="data.data.gapRevenue != null">{{math.ceil(data.data.gapRevenue).toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+
+
+
+  <div *dxTemplate="let d of 'shipmentsCompletions'">
+    <div class="chart-cell actual">
+      <dx-chart  [rotated]="true"  id="chart" [dataSource]="d.data.shipments">
+        <dxi-series  color="green" valueField="actualShipment" name="Actual Shipments" stack="shipment"></dxi-series>
+        <dxi-series id="projected"  color="rgba(57, 225, 65, 0.4)"   dashStyle="dash"  stack="shipment" valueField="projectedShipment" name="Project Shipment"></dxi-series>
+       
+        <dxi-series  color="blue" valueField="actualCompletion" name="Actual Completions"  stack="completion"></dxi-series>
+        <dxi-series id="projected"  color="rgba(104, 129, 239, 0.4)"   dashStyle="dash"  stack="completion" valueField="projectedCompletion" name="Projected Completions"></dxi-series>
+        <dxi-value-axis position="left">
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetShipment"
+          color="green"
+          dashStyle="solid"
+          hatching="true"
+          >
+            <dxo-label  [visible]="false"  text=""></dxo-label>
+          </dxi-constant-line>
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetCompletion"
+          color="rgba(104, 129, 239, 0.7)"
+          dashStyle="dash"
+          hatching="true"
+          >
+            <dxo-label  text=""></dxo-label>
+          </dxi-constant-line>
+        </dxi-value-axis>
+        <dxo-common-series-settings [barPadding]="0.5"  argumentField="state" type="stackedBar">
+        </dxo-common-series-settings>
+        <dxo-tooltip
+          [enabled]="true"
+          location="edge"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-size
+        [height]="30"
+        [width]="230">
+        </dxo-size>
+        <dxo-legend
+        [visible]="false"
+      >
+      </dxo-legend>
+      </dx-chart>
+    </div>
+  </div>
+
+  <div *dxTemplate="let d of 'shipments'">
+    <div class="chart-cell actual">
+      <dx-chart  [rotated]="true"  id="chart" [dataSource]="d.data.shipments">
+        <dxi-series  color="green" valueField="actualShipment" name="Actual Shipments" stack="shipment"></dxi-series>
+        <dxi-series id="projected"  color="rgba(57, 225, 65, 0.4)"   dashStyle="dash"  stack="shipment" valueField="projectedShipment" name="Project Shipment"></dxi-series>
+       
+        <dxi-value-axis position="left">
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetShipment"
+          color="green"
+          dashStyle="solid"
+          hatching="true"
+          >
+            <dxo-label  [visible]="false"  text=""></dxo-label>
+          </dxi-constant-line>
+        </dxi-value-axis>
+        <dxo-common-series-settings [barPadding]="0.5"  argumentField="state" type="stackedBar">
+        </dxo-common-series-settings>
+        <dxo-tooltip
+          [enabled]="true"
+          location="edge"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-size
+        [height]="30"
+        [width]="230">
+        </dxo-size>
+        <dxo-legend
+        [visible]="false"
+      >
+      </dxo-legend>
+      </dx-chart>
+    </div>
+  </div>
+
+  <div *dxTemplate="let d of 'completions'">
+    <div class="chart-cell actual">
+      <dx-chart  [rotated]="true"  id="chart" [dataSource]="d.data.shipments">
+        <dxi-series  color="blue" valueField="actualCompletion" name="Actual Completions"  stack="completion"></dxi-series>
+        <dxi-series id="projected"  color="rgba(104, 129, 239, 0.4)"   dashStyle="dash"  stack="completion" valueField="projectedCompletion" name="Projected Completions"></dxi-series>
+
+        <dxi-value-axis position="left">
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetCompletion"
+          color="rgba(104, 129, 239, 0.7)"
+          dashStyle="dash"
+          hatching="true"
+          >
+            <dxo-label  [visible]="false"  text=""></dxo-label>
+          </dxi-constant-line>
+        </dxi-value-axis>
+        <dxo-common-series-settings [barPadding]="0.5"  argumentField="state" type="stackedBar">
+        </dxo-common-series-settings>
+        <dxo-tooltip
+          [enabled]="true"
+          location="edge"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-size
+        [height]="30"
+        [width]="230">
+        </dxo-size>
+        <dxo-legend
+        [visible]="false"
+      >
+      </dxo-legend>
+      </dx-chart>
+    </div>
+  </div>
+</dx-data-grid>
+
+

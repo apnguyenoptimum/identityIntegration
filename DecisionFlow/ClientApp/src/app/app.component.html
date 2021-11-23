@@ -1,0 +1,16 @@
+<ng-container *ngIf="isAuthenticated(); else unauthenticated">
+  <app-side-nav-outer-toolbar title="{{appInfo.title}}">
+    <router-outlet></router-outlet>
+    <app-footer>
+      <div class="foot">
+        Copyright © 2011-{{appInfo.currentYear}} {{appInfo.title}} Inc. <app-icon class="minilogo" [icon]="'minidflogo'"></app-icon>
+      </div>
+      <br/>
+      All trademarks or registered trademarks are property of their respective owners.
+    </app-footer>
+  </app-side-nav-outer-toolbar>
+</ng-container>
+
+<ng-template #unauthenticated>
+  <app-unauthenticated-content></app-unauthenticated-content>
+</ng-template>

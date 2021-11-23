@@ -1,0 +1,36 @@
+<dx-chart
+  id="chart"
+  palette="violet"
+  title="Projected"
+  [dataSource]="oilPrices"
+>
+  <dxo-common-series-settings
+    argumentField="date"
+    type="rangeBar"
+  ></dxo-common-series-settings>
+  <dxi-value-axis>
+    <dxo-title text="Dollars $"></dxo-title>
+  </dxi-value-axis>
+  <dxo-argument-axis>
+    <dxo-label format="month"></dxo-label>
+  </dxo-argument-axis>
+  <!-- <dxo-export [enabled]="true"></dxo-export> -->
+  <dxo-legend
+    verticalAlignment="bottom"
+    horizontalAlignment="center"
+  ></dxo-legend>
+  <dxi-series
+    rangeValue1Field="aVal1"
+    rangeValue2Field="aVal2"
+    name="ANS West Coast"
+  ></dxi-series>
+  <dxi-series
+    rangeValue1Field="tVal1"
+    rangeValue2Field="tVal2"
+    name="West Texas Intermediate"
+  ></dxi-series>
+  <dxo-size
+  [height]="210"
+  [width]="210">
+  </dxo-size>
+</dx-chart>

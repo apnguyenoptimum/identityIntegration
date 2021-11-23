@@ -1,0 +1,102 @@
+<h2 class="content-block">Manage Your Account</h2>
+
+<!-- <div class="content-block dx-card responsive-paddings">
+  <div class="form-avatar">
+    <img src="https://js.devexpress.com/Demos/WidgetsGallery/JSDemos/{{employee.Picture}}"/>
+  </div>
+  <span>{{employee.Notes}}</span>
+</div> -->
+
+
+<dx-tabs  (onItemClick)="itemClick($event)" [dataSource]="longtabs"></dx-tabs>
+<div class="form-container">
+  <div *ngIf="isProfile" class="content-block dx-card responsive-paddings">
+    <dx-form id="form"
+      [formData]="employee"
+      labelLocation="top"
+      [colCountByScreen]="colCountByScreen"
+    >
+      <dxi-item itemType="group" caption="Profile Information">
+        <dxi-item dataField="UserName">
+        </dxi-item>
+        <dxi-item dataField="PhoneNumber">
+        </dxi-item>
+        <dxi-item>
+          <dx-drop-down-box
+          class="margin"
+          [(value)]="selectedValue"
+          [(opened)]="isDropDownBoxOpened"
+          valueExpr="ID"
+          displayExpr="companyName"
+          placeholder="Site"
+          [dataSource]="customerDataSource">
+              <dx-data-grid 
+                  [dataSource]="customerDataSource"
+                  [selection]="{ mode: 'multiple' }"
+                  [columns]="['companyName']"
+                  [height]="265"
+                  [(selectedRowKeys)]="selectedCustomers"
+                  (onSelectionChanged)="changeDropDownBoxValue()">
+              </dx-data-grid>
+          </dx-drop-down-box>
+        </dxi-item>
+        <dxi-item>
+          <dx-file-uploader
+          selectButtonText="Upload Company Logo"
+          labelText=""
+          accept="image/*"
+          uploadMode="useForm">
+          </dx-file-uploader>
+          
+        </dxi-item>
+        <dxi-item 
+        itemType="button"
+        location="right"
+        [buttonOptions]="buttonOptions">
+        </dxi-item>
+      </dxi-item>
+      
+    </dx-form>
+  </div>
+  <div *ngIf="isEmail" class="content-block dx-card responsive-paddings">
+    <dx-form id="form"
+      [formData]="employee"
+      labelLocation="top"
+      [colCountByScreen]="colCountByScreen"
+    >
+    <dxi-item itemType="group" caption="Change Email">
+      <dxi-item dataField="Email">
+      </dxi-item>
+      <dxi-item dataField="New Email">
+      </dxi-item>
+      <dxi-item 
+      itemType="button"
+      location="right"
+      [buttonOptions]="buttonOptions">
+      </dxi-item>
+    </dxi-item>
+    </dx-form>
+  </div>
+  <div *ngIf="isPassword" class="content-block dx-card responsive-paddings">
+    <dx-form id="form"
+      [formData]="employee"
+      labelLocation="top"
+      [colCountByScreen]="colCountByScreen"
+    >
+    <dxi-item itemType="group" caption="Change Password">
+      <dxi-item dataField="Current Password">
+      </dxi-item>
+      <dxi-item dataField="New Password">
+      </dxi-item>
+      <dxi-item dataField="Confirm New Password">
+      </dxi-item>
+      <dxi-item 
+      itemType="button"
+      location="right"
+      [buttonOptions]="buttonOptions">
+      </dxi-item>
+    </dxi-item>
+    </dx-form>
+  </div>
+  
+</div>

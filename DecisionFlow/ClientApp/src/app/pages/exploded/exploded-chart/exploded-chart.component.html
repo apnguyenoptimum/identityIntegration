@@ -1,0 +1,199 @@
+<dx-tree-list
+
+id="jsonData"
+[dataSource]="jsonData"
+keyExpr="ComponentID"
+parentIdExpr="ParentID"
+[autoExpandAll]="true"
+[selectedRowKeys]="[]"
+[columnAutoWidth]="true"
+[wordWrapEnabled]="true"
+[showBorders]="true">
+
+<!-- <dxo-search-panel [visible]="true" width="250"></dxo-search-panel> -->
+<dxo-header-filter [visible]="true"></dxo-header-filter>
+<dxo-selection mode="multiple"></dxo-selection>
+<dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+<dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+<dxi-column  [fixed]="true" dataField="Index" [width]="150"></dxi-column>
+
+<dxi-column [fixed]="true" dataField="Deliverable" caption="Deliverable" [minWidth]="100" >
+  <dxo-lookup [dataSource]="jsonData" ></dxo-lookup>
+</dxi-column>
+
+<dxi-column [fixed]="true" dataField="Component" caption="Component" [minWidth]="100" >
+  <dxo-lookup [dataSource]="jsonData" ></dxo-lookup>
+</dxi-column>
+
+<dxi-column [fixed]="true" dataField="Parent" caption="Parent" [minWidth]="5">
+  <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+</dxi-column>
+
+<dxi-column [fixed]="true" dataField="Level" caption="Level" [minWidth]="20">
+  <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+</dxi-column>
+
+<dxi-column [fixed]="true" dataField="M/B" caption="M/B" [minWidth]="20">
+  <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+</dxi-column>
+
+<dxi-column [fixed]="true" dataField="Lead Time Weeks" caption="Lead Time Weeks" [minWidth]="20">
+  <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+</dxi-column>
+<dxi-column [fixed]="true" dataField="Start" caption="Start" [minWidth]="20">
+  <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+</dxi-column>
+
+  <dxi-column [fixed]="true" dataField="Finish" caption="Finish" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate" dataField="12" caption="12" [minWidth]="20">
+    <!-- <dxo-lookup [dataSource]="jsonData"></dxo-lookup> -->
+    <div *dxTemplate="let cell of 'cellTemplate'">
+      <div style="background-color:rgb(255, 84, 78)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+  <dxi-column cellTemplate="cellTemplate2" dataField="11" caption="11" [minWidth]="20">
+    <!-- <dxo-lookup [dataSource]="jsonData"></dxo-lookup> -->
+    <div *dxTemplate="let cell of 'cellTemplate2'">
+      <div style="background-color:rgb(126, 241, 97)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate3" dataField="10" caption="10" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate3'">
+      <div style="background-color:rgb(126, 241, 97)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate4" dataField="9" caption="9" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate4'">
+      <div style="background-color:rgb(126, 241, 97)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate5"  dataField="8" caption="8" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate5'">
+      <div style="background-color:rgb(126, 241, 97)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate6" dataField="7" caption="7" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate6'">
+      <div style="background-color:rgb(126, 241, 97)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate7" dataField="6" caption="6" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate7'">
+      <div style="background-color:rgb(255, 84, 78)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate8" dataField="5" caption="5" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate8'">
+      <div style="background-color:rgb(255, 84, 78)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <!-- <dxi-column caption="Discount %" dataField="Discount" cellTemplate="discountCellTemplate" dataType="number" format="percent" alignment="right" [allowGrouping]="false" cssClass="bullet"></dxi-column> -->
+
+  
+
+  <dxi-column cellTemplate="cellTemplate9" dataField="4" caption="4" [minWidth]="20"
+   dataType="number" format="percent" alignment="right" [allowGrouping]="false" cssClass="bullet"
+  >
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate9'">
+      <div style="background-color:purple">{{ cell.text }}</div>
+    </div>
+
+    <!-- <div *dxTemplate="let d of 'cellTemplate9'">
+      <div class="chart-cell">
+          <dx-bullet
+              [showTarget]="false"
+              [showZeroLevel]="true"
+              [startScaleValue]="0"
+              [endScaleValue]="100"
+              [value]="d.value * 100">
+              <dxo-size [width]="15" [height]="5"></dxo-size>
+              <dxo-tooltip
+                  [enabled]="true"
+                  [paddingTopBottom]="2"
+                  [customizeTooltip]="customizeTooltip">
+                  <dxo-font [size]="18"></dxo-font>
+              </dxo-tooltip>
+              <dxo-margin
+                  [top]="5"
+                  [bottom]="0"
+                  [left]="5"
+              ></dxo-margin>
+          </dx-bullet>
+      </div>
+  </div> -->
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate10" dataField="3" caption="3" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate10'">
+      <div style="background-color:rgb(255, 84, 78)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate11" dataField="2" caption="2" [minWidth]="20">
+    <dxo-lookup [dataSource]="jsonData"></dxo-lookup>
+    <div *dxTemplate="let cell of 'cellTemplate11'">
+      <div style="background-color:rgb(255, 84, 78)">{{ cell.text }}</div>
+    </div>
+  </dxi-column>
+
+  <dxi-column cellTemplate="cellTemplate12" dataField="1" caption="1" [minWidth]="50"
+  dataType="number"  alignment="right" [allowGrouping]="false" cssClass="bullet"
+  >
+    <!-- <dxo-lookup [dataSource]="jsonData"></dxo-lookup> -->
+    <!-- <div *dxTemplate="let d of 'cellTemplate12'">
+      <div style="background-color:rgb(255, 84, 78)">{{ d.text }}
+      
+      </div>
+    </div> -->
+       <div *dxTemplate="let d of 'cellTemplate12'">
+      <div style="display: flex; justify-content: center;" class="chart-cell">
+        <!-- <dx-bullet 
+class="bullet"
+[startScaleValue]="0"
+[endScaleValue]="35"
+[value]="20"
+[target]="7"
+[color]="'blue'">
+<dxo-size [width]="150" [height]="35"></dxo-size>
+  
+<dxo-margin
+[top]="5"
+[bottom]="0"
+[left]="5"
+></dxo-margin>
+</dx-bullet> -->
+          <dx-bullet
+              [showTarget]="false"
+            
+              [startScaleValue]="0"
+              [endScaleValue]="100"
+              [value]="d.text * 100">
+              <dxo-size [width]="140" [height]="35"></dxo-size>
+             
+              <dxo-margin
+                  [top]="5"
+                  [bottom]="0"
+                  [left]="5"
+              ></dxo-margin>
+          </dx-bullet>
+      </div>
+  </div>
+  </dxi-column>

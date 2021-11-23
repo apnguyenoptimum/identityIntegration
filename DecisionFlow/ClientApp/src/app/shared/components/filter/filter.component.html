@@ -1,0 +1,248 @@
+<div class="filter-container">
+    <form (submit)="handleSubmit($event)">
+         <dx-form
+         [colCount]="columnValue"
+         id="filterForm"
+         [formData]="filters">
+             <dxi-item [elementAttr]="{id: 'customers'}" class="filter-container">
+                 <div class="dropdown-container">
+                     <div id="customerDropdown"
+                     class="dropdownTitle"
+                     (mouseenter)="toggleDefault()"
+                     (mouseleave)="toggleDefault()"
+                     >{{customerTitle}}
+                     </div>
+                     <dx-drop-down-box
+                     class="margin"
+                     [(value)]="selectedCustomerValue"
+                     [(opened)]="isDropDownBoxOpened1"
+                     valueExpr="customerID"
+                     displayExpr="customerName"
+                     placeholder="Select Customers"
+                     [dataSource]="customerDataSource">
+                         <dx-data-grid 
+                             [dataSource]="customerDataSource"
+                             [selection]="{ mode: 'multiple' }"
+                             [columns]="['customerName']"
+                             [height]="265"
+                             [(selectedRowKeys)]="selectedCustomers"
+                             (onSelectionChanged)="changeCustomerDropdown()">
+                         </dx-data-grid>
+                     </dx-drop-down-box>
+                 </div>
+           </dxi-item>
+             <dxi-item>
+                 <div id="programDropdown"
+                     class="dropdownTitle"
+                     (mouseenter)="toggleProgamDefault()"
+                     (mouseleave)="toggleProgamDefault()"
+                     >{{programTitle}}
+                 </div>
+                 <dx-drop-down-box
+                 class="margin"
+                 [(value)]="selectedProgramValue"
+                 [(opened)]="isDropDownBoxOpened2"
+                 valueExpr="programID"
+                 displayExpr="programName"
+                 placeholder="Select Programs"
+                 [dataSource]="programDataSource">
+                     <dx-data-grid 
+                         [dataSource]="programDataSource"
+                         [selection]="{ mode: 'multiple' }"
+                         [columns]="['programName']"
+                         [height]="265"
+                         [(selectedRowKeys)]="selectedPrograms"
+                         (onSelectionChanged)="changeProgramDropdown()">
+                     </dx-data-grid>
+                 </dx-drop-down-box>
+             </dxi-item>
+             <dxi-item>
+                 <div id="plannerDropdown"
+                 class="dropdownTitle"
+                 (mouseenter)="togglePlannerDefault()"
+                 (mouseleave)="togglePlannerDefault()"
+                 >{{plannerTitle}}
+                 </div>
+                 <dx-drop-down-box
+                 class="margin"
+                 [(value)]="selectedPlannerValue"
+                 [(opened)]="isDropDownBoxOpened3"
+                 valueExpr="plannerID"
+                 displayExpr="plannerName"
+                 placeholder="Select Planners"
+                 [dataSource]="plannerDataSource">
+                     <dx-data-grid 
+                         [dataSource]="plannerDataSource"
+                         [selection]="{ mode: 'multiple' }"
+                         [columns]="['plannerName']"
+                         [height]="265"
+                         [(selectedRowKeys)]="selectedPlanners"
+                         (onSelectionChanged)="changePlannerDropdown()">
+                     </dx-data-grid>
+                 </dx-drop-down-box>
+             </dxi-item>
+             <dxi-item>
+                 <div
+                 class="dropdownTitle"
+                 (mouseenter)="toggleDefault()"
+                 (mouseleave)="toggleDefault()"
+                 >CUSTOM FILTERS
+                 </div>
+                 <dx-drop-down-box
+                 class="margin"
+                 [(value)]="selectedFilterValue"
+                 [(opened)]="isDropDownBoxOpened4"
+                 valueExpr="ID"
+                 displayExpr="Filter"
+                 placeholder="Select Custom Filter"
+                 [dataSource]="filterDataSource">
+                     <dx-data-grid 
+                         [dataSource]="filterDataSource"
+                         [selection]="{ mode: 'multiple' }"
+                         [columns]="['Filter']"
+                         [height]="265"
+                         [(selectedRowKeys)]="selectedFilters"
+                         (onSelectionChanged)="changeFilterDropdown()">
+                     </dx-data-grid>
+                 </dx-drop-down-box>
+             </dxi-item>
+             <dxi-item
+             itemType="button"
+             horizontalAlignment="center"
+             verticalAlignment="center"
+             >
+             <dxo-button-options text="Clear Filter" width="100%" [onClick]="clearFilter"></dxo-button-options>
+             </dxi-item>
+ 
+             <dxi-item
+             itemType="button"
+             itemType="button"
+             horizontalAlignment="center"
+             verticalAlignment="center"
+             >
+             <dxo-button-options text="Save Filter" width="100%" [onClick]="showFilterInfo"></dxo-button-options>
+            
+             </dxi-item>
+             <dxi-item
+             id="applyFilter"
+             itemType="button"
+             horizontalAlignment="center"
+             verticalAlignment="center"
+             cssClass="cls"
+             [buttonOptions]="buttonOptions"
+          
+             >
+     
+             </dxi-item>
+             
+             <dxi-item
+   
+             verticalAlignment="center"
+             >
+           
+                <div class="datepicker-container">
+                    <div
+                    class="dropdownTitle"
+              
+                    >DATE PICKER
+                    </div>
+                    <input autocomplete="off" class="picker" type="text" [ranges]="ranges" [linkedCalendars]="true"   [locale]="{applyLabel: 'ok', format: 'MM-DD-YYYY'}"  name="daterange" ngxDaterangepickerMd [alwaysShowCalendars]="true" [(ngModel)]="selectedDates" class="form-control" (datesUpdated)="handleSubmit($event)"/>
+                </div>
+            </dxi-item>
+         </dx-form>
+    </form>
+    <dx-tooltip
+     target="#customerDropdown"
+     [(visible)]="customerTooltip"
+     [closeOnOutsideClick]="false"
+     >
+         <div *dxTemplate="let data = data; of: 'content'"> 
+             <div *ngFor="let name of customerNames">
+                 <span>{{name}}</span>
+             </div> 
+         </div>
+     </dx-tooltip>
+     <dx-tooltip
+     target="#plannerDropdown"
+     [(visible)]="plannerTooltip"
+     [closeOnOutsideClick]="false"
+     >
+         <div *dxTemplate="let data = data; of: 'content'"> 
+             <div *ngFor="let name of plannerNames">
+                 <span>{{name}}</span>
+             </div> 
+         </div>
+     </dx-tooltip>
+     <dx-tooltip
+     target="#programDropdown"
+     [(visible)]="programTooltip"
+     [closeOnOutsideClick]="false"
+     >
+         <div *dxTemplate="let data = data; of: 'content'"> 
+             <div *ngFor="let name of programNames">
+                 <span>{{name}}</span>
+             </div> 
+     </div>
+     </dx-tooltip>
+    <dx-popup
+    contentTemplate="popup-content"
+    container=".dx-viewport"
+    [(visible)]="isDisabled"
+    [width]="300"
+    [height]="300"
+    [showTitle]="true"
+    title="Select Filters"
+    >
+    <div *dxTemplate="let data of 'popup-content'">
+       <h3>
+          Please select filters before clicking apply button.
+       </h3>
+    </div>
+ </dx-popup>
+ 
+ <dx-popup
+    contentTemplate="popup-content"
+    container=".dx-viewport"
+    [(visible)]="isMaxFilter"
+    [width]="300"
+    [height]="300"
+    [showTitle]="true"
+    title="WARNING"
+    >
+    <div *dxTemplate="let data of 'popup-content'">
+       <h3>
+           You are populating a large set of data. The information may take a few minutes to load.
+       </h3>
+    </div>
+ </dx-popup>
+ 
+ <dx-popup
+ contentTemplate="popup-content"
+ container=".dx-viewport"
+ [(visible)]="popupVisible"
+ [width]="300"
+ [height]="180"
+ [showTitle]="true"
+ title="Filter Name"
+ [closeOnOutsideClick]="true"
+  >
+  <dxi-toolbar-item
+  widget="dxButton"
+  toolbar="bottom"
+  location="after"
+  [options]="saveButtonOptions"
+>
+</dxi-toolbar-item>
+
+<div *dxTemplate="let data of 'popup-content'">
+    <dx-text-box
+     placeholder="Enter filter name here..."
+     valueChangeEvent="keyup"
+     (onValueChanged)="valueTextBoxChanged($event)"
+     ></dx-text-box>
+ </div>
+
+</dx-popup>
+ </div>
+ 
+ 

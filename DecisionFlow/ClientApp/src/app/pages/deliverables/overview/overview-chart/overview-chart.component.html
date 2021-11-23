@@ -1,0 +1,214 @@
+<!-- <dx-data-grid
+    id="gridContainer"
+    [dataSource]="materialDataSource"
+    keyExpr="ID"
+    [allowColumnReordering]="true"
+    [allowColumnResizing]="true"
+    [columnAutoWidth]="true"
+    [showColumnLines]="true"
+    [showRowLines]="true"
+    [showBorders]="true"
+    (onExporting)="onExporting($event)"
+    (onCellClick)="onCellClick($event)"
+    >
+    <dxo-scrolling rowRenderingMode="virtual"> </dxo-scrolling>
+    <dxo-paging [pageSize]="10"> </dxo-paging>
+    <dxo-pager
+      [visible]="true"
+      [allowedPageSizes]="allowedPageSizes"
+      [displayMode]="displayMode"
+      [showPageSizeSelector]="showPageSizeSelector"
+      [showInfo]="showInfo"
+      [showNavigationButtons]="showNavButtons"
+    >
+    </dxo-pager>
+    <dx-button text='hello'></dx-button>
+    <dxo-column-chooser [enabled]="true"></dxo-column-chooser>
+    <dxo-export [enabled]="true"></dxo-export>
+    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+    <dxi-column  [allowExporting]="true" cellTemplate="unitCompletion"caption="Unit Short Completions" dataField="shortCompletions" [visible]="false" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="unitShort" caption="Unit Short Shipment" dataField="shortShipment" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="make"  caption="Make Shortages" dataField="makePartCountCausingShortage" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="buy" caption="Buy Shortages"dataField="buyPartCountCausingShortage" [width]="100"></dxi-column>
+    <dxi-column cellTemplate="shipmentsCompletions"  caption="Shipments/Completions (Units)" dataField="shipments" [width]="250" ></dxi-column>
+    <dxi-column cellTemplate="shipments"  caption="Shipments (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="completions"  caption="Completions (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="actualRevenue" caption="Actual Revenue ($)" dataField="actualRevenue" alignment="left"></dxi-column>
+    <dxi-column cellTemplate="projectedRevenue" caption="Projected Revenue ($)" dataField="projectedRevenue" alignment="left"></dxi-column>
+    <dxi-column cellTemplate="targetRevenue" caption="Target Revenue ($)" dataField="targetRevenue" alignment="left"></dxi-column>
+    <dxi-column cellTemplate="gapRevenue" caption="Gap Revenue ($)"dataField="gapRevenue" alignment="left"></dxi-column>
+    <dxi-column alignment="left" caption="Actual Shipments" dataField="actualShipment" [width]="205"  [width]="100" [visible]="false"></dxi-column>
+    <dxi-column alignment="left" caption="Projected Shipments" dataField="projectedShipment" [width]="205"  [width]="100" [visible]="false"></dxi-column>
+    <dxi-column alignment="left" caption="Target Shipments" dataField="targetShipment" [width]="205"  [width]="100" [visible]="false"></dxi-column>
+    <dxi-column alignment="left" caption="Actual Completions" dataField="actualCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
+    <dxi-column alignment="left" caption="Prejected Completions" dataField="projectedCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
+    <dxi-column alignment="left" caption="Target Completions" dataField="targetCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
+    <dxi-column alignment="left" caption="Deliverable"dataField="deliverable"></dxi-column>
+    <dxi-column alignment="left" caption="Description"dataField="description"></dxi-column>
+    <dxi-column cellTemplate="forecastRevenue" caption="Forecast Revenue ($)"dataField="forecastRevenue" alignment="left"></dxi-column>
+    <dxi-column caption="Average Unit Sold Price" dataField="averageUnitSoldPrice" [visible]="false"></dxi-column>
+    <dxi-column caption="Planner(s)" dataField="planner" [visible]="false"></dxi-column>
+    <dxi-column caption="Max Revenue ($)" dataField="maxRevenue" [visible]="false"></dxi-column>
+    <dxi-column caption="Source TYpe" dataField="sourceType" [visible]="false"></dxi-column>
+    <dxi-column caption="Current Stock" dataField="currentStock" [visible]="false"></dxi-column>
+    <dxi-column caption="Open Orders" dataField="openOrders" [visible]="false"></dxi-column>
+    <dxi-column caption="Programs" dataField="programList" [visible]="false"></dxi-column>
+    <dxi-column caption="Current/Past Due" dataField="currentDue" [visible]="false"></dxi-column>
+    <dxi-column caption="Future Due" dataField="futureDue" [visible]="false"></dxi-column>
+
+<div class="circle-container" *dxTemplate="let data of 'make'">
+  <div [class.red]="data.data.makePartCountCausingShortage < 1" class="circle"></div>
+  <div>{{data.data.makePartCountCausingShortage}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'unitShort'">
+  <div class="circle"></div>
+  <div>{{data.data.shortShipment}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'unitCompletion'">
+  <div class="circle"></div>
+  <div>{{data.data.shortCompletions}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'buy'">
+  <div class="circle"></div>
+  <div>{{data.data.buyPartCountCausingShortage}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'actualRevenue'">
+  <div *ngIf="data.data.actualRevenue != null">{{math.ceil(data.data.actualRevenue)}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'projectedRevenue'">
+  <div *ngIf="data.data.projectedRevenue != null">{{data.data.projectedRevenue.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'targetRevenue'">
+  <div *ngIf="data.data.targetRevenue != null">{{data.data.targetRevenue.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'forecastRevenue'">
+  <div *ngIf="data.data.forecastRevenue != null">{{data.data.forecastRevenue.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+<div class="circle-container" *dxTemplate="let data of 'gapRevenue'">
+  <div *ngIf="data.data.gapRevenue != null">{{data.data.gapRevenue.toLocaleString("en-US", { minimumFractionDigits: 0 }).split('.')[0]}}</div>
+</div>
+
+
+
+  <div *dxTemplate="let d of 'shipmentsCompletions'">
+    <div class="chart-cell actual">
+      <dx-chart  [rotated]="true"  id="chart" [dataSource]="d.data.shipments">
+        <dxi-series  color="green" valueField="actualShipment" name="Actual Shipments" stack="shipment"></dxi-series>
+        <dxi-series id="projected"  color="rgba(57, 225, 65, 0.4)"   dashStyle="dash"  stack="shipment" valueField="projectedShipment" name="Project Shipment"></dxi-series>
+       
+        <dxi-series  color="blue" valueField="actualCompletion" name="Actual Completions"  stack="completion"></dxi-series>
+        <dxi-series id="projected"  color="rgba(104, 129, 239, 0.4)"   dashStyle="dash"  stack="completion" valueField="projectedCompletion" name="Projected Completions"></dxi-series>
+        <dxi-value-axis position="left">
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetShipment"
+          color="green"
+          dashStyle="solid"
+          hatching="true"
+          >
+            <dxo-label  [visible]="false"  text=""></dxo-label>
+          </dxi-constant-line>
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetCompletion"
+          color="rgba(104, 129, 239, 0.7)"
+          dashStyle="dash"
+          hatching="true"
+          >
+            <dxo-label  text=""></dxo-label>
+          </dxi-constant-line>
+        </dxi-value-axis>
+        <dxo-common-series-settings [barPadding]="0.5"  argumentField="state" type="stackedBar">
+        </dxo-common-series-settings>
+        <dxo-tooltip
+          [enabled]="true"
+          location="edge"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-size
+        [height]="36"
+        [width]="230">
+        </dxo-size>
+        <dxo-legend
+        [visible]="false"
+      >
+      </dxo-legend>
+      </dx-chart>
+    </div>
+  </div>
+
+  <div *dxTemplate="let d of 'shipments'">
+    <div class="chart-cell actual">
+      <dx-chart  [rotated]="true"  id="chart" [dataSource]="d.data.shipments">
+        <dxi-series  color="green" valueField="actualShipment" name="Actual Shipments" stack="shipment"></dxi-series>
+        <dxi-series id="projected"  color="rgba(57, 225, 65, 0.4)"   dashStyle="dash"  stack="shipment" valueField="projectedShipment" name="Project Shipment"></dxi-series>
+       
+        <dxi-value-axis position="left">
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetShipment"
+          color="green"
+          dashStyle="solid"
+          hatching="true"
+          >
+            <dxo-label  [visible]="false"  text=""></dxo-label>
+          </dxi-constant-line>
+        </dxi-value-axis>
+        <dxo-common-series-settings [barPadding]="0.5"  argumentField="state" type="stackedBar">
+        </dxo-common-series-settings>
+        <dxo-tooltip
+          [enabled]="true"
+          location="edge"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-size
+        [height]="36"
+        [width]="230">
+        </dxo-size>
+        <dxo-legend
+        [visible]="false"
+      >
+      </dxo-legend>
+      </dx-chart>
+    </div>
+  </div>
+
+  <div *dxTemplate="let d of 'completions'">
+    <div class="chart-cell actual">
+      <dx-chart  [rotated]="true"  id="chart" [dataSource]="d.data.shipments">
+        <dxi-series  color="blue" valueField="actualCompletion" name="Actual Completions"  stack="completion"></dxi-series>
+        <dxi-series id="projected"  color="rgba(104, 129, 239, 0.4)"   dashStyle="dash"  stack="completion" valueField="projectedCompletion" name="Projected Completions"></dxi-series>
+
+        <dxi-value-axis position="left">
+          <dxi-constant-line
+          [width]="2"
+          [value]="d.data.shipments[0].targetCompletion"
+          color="rgba(104, 129, 239, 0.7)"
+          dashStyle="dash"
+          hatching="true"
+          >
+            <dxo-label  [visible]="false"  text=""></dxo-label>
+          </dxi-constant-line>
+        </dxi-value-axis>
+        <dxo-common-series-settings [barPadding]="0.5"  argumentField="state" type="stackedBar">
+        </dxo-common-series-settings>
+        <dxo-tooltip
+          [enabled]="true"
+          location="edge"
+          [customizeTooltip]="customizeTooltip"
+        >
+        </dxo-tooltip>
+        <dxo-size
+        [height]="36"
+        [width]="230">
+        </dxo-size>
+        <dxo-legend
+        [visible]="false"
+      >
+      </dxo-legend>
+      </dx-chart>
+    </div>
+  </div>
+</dx-data-grid> -->

@@ -1,0 +1,10 @@
+<div class="deliverables-container">
+    <app-top-nav (selected)="receiveClick($event)"></app-top-nav>
+    <app-filter></app-filter>
+    <div>test</div>
+    <app-overview *ngIf="overview" ></app-overview>
+    <app-charts *ngIf="charts"></app-charts>
+    <app-inventory *ngIf="inventory"></app-inventory>
+    <app-performance *ngIf="performance"></app-performance>
+</div>
+

@@ -1,0 +1,292 @@
+.top-panel-container {
+    display: flex;
+    width: 97%;
+    // border: 1px solid #cfcfcf;
+    height: 100%;
+    margin: 1%;
+    margin-right: 0%;
+    margin-left: 0%;
+    box-shadow: 0 1px 3px 1px rgb(0 0 0 / 12%), 0 1px 2px 1.5px rgb(0 0 0 / 24%);
+}
+
+.inner {
+    // border: 1px solid #cfcfcf;;
+    // border-right: 2px solid #cfcfcf;
+    // border-left: 2px solid #cfcfcf;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inner-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3%;
+}
+
+.KPI {
+    display: flex;
+    justify-content: center;
+    padding-top: 3%;
+    justify-content: space-between;
+    margin-right: 10%;
+    margin-left: 10%;
+    @media (max-height: 600px) {
+        margin-left: 1%;
+      }
+}
+
+.leftKPI {
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.title {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.buy {
+    margin: 4%;
+}
+
+.make {
+    margin: 4%;
+}
+
+.percent-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -5.4%;
+    margin-left: 3%;
+}
+
+.kpi-values {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.percentage {
+    font-size: 100%;
+    display: flex;
+    margin-left: 3%;
+    border-radius: 5px;
+    padding: 10%;
+    margin-top: -5%;
+}
+
+.isPositive{
+    background-color: rgb(57 225 65 / 40%);
+}
+
+.isNegative {
+    background-color: #ff9a92;
+}
+
+.outer-container {
+    border-top: 1px solid #cfcfcf;
+    border-bottom: 1px solid #cfcfcf;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+.top-text-div {
+    font-size: 170%;
+    font-weight: 500 !important;
+}
+
+.mid-text {
+    font-weight: 500;
+    color: #918d8d;
+}
+
+.chart {
+    display: flex;
+    justify-content: center;
+}
+
+.chart-div {
+    padding: 1.5%;
+    padding-bottom: 1%;
+    margin-left: 11.7%;
+    @media (max-height: 678px) {
+        margin-left: 15%;
+      }
+}
+
+.outer {
+    display: flex;
+    flex-direction: column;
+    width: 155%;
+    justify-content: center;
+    // border-right: 2px solid #cfcfcf;
+    // border-left: 2px solid #cfcfcf;
+    border-right: 2px solid #cfcfcf;
+    border-left: 2px solid #cfcfcf;
+}
+
+.totals {
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+    padding-left: 5%;
+    height: 25%;
+    margin-left: 8%;
+    margin-right: 6%;
+    padding-top: 2.5%;
+}
+
+.toggle {
+    display: flex;
+}
+
+.totals-text {
+    font-size: 205%;
+    font-weight: 500;
+}
+
+.money {
+    border-left: 1px solid #959595;
+}
+
+.unit {
+   padding-top: 10%;
+   padding-bottom: 10%;
+   display: flex;
+   justify-content: center;
+   width: 100%;
+   font-weight: 400;
+   cursor: pointer;
+   font-weight: 700;
+   &:hover {
+    background-color: #dbf0fd;
+    }
+}
+
+.selected {
+    background-color: #dbf0fd;
+    color: #007eeb;
+}
+
+.toggle {
+    border: 1px solid #959595;
+    border-radius: 3px;
+    margin-left: -155%;
+    width: 250%;
+    display: flex;
+    justify-content: center;
+}
+
+.numeric {
+    font-size: 150%;
+    font-weight: 500;
+    @media (max-height: 610px) {
+        font-size: 100%;
+      }
+}
+
+.mid {
+    margin-bottom: 4%;
+}
+
+.value {
+    font-size: 150%;
+    font-weight: 900;
+    display: flex;
+    @media (max-height: 610px) {
+        font-size: 140%;
+      }
+}
+
+.mid-text {
+    font-weight: 500;
+    color: #918d8d;
+}
+
+.left-border {
+
+    border-left: 2px solid #cfcfcf;
+}
+
+.healthy {
+    color: green;
+}
+
+.constrained {
+    color: red;
+}
+
+.hidden {
+    display: none; 
+}
+
+.tooltip-title{
+    font-weight: 600;
+}
+
+a {
+    cursor: pointer;
+}
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.barTitle {
+    text-align: center;
+    font-size: 60%;
+    font-weight: 200;
+}
+
+// .leftMargin {
+//     margin-left: -7.5%;
+// }
+
+.dollar {
+    margin-right: 6%;
+}
+
+dx-button {
+    margin-top: -3%;
+}
+
+dx-export-menu-button {
+    display: none !important;
+}
+
+.circle {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5%;
+    margin-top: 2.9%;
+}
+
+.circle-container {
+    display: flex;
+    justify-content: end;
+}
+
+.actual {
+    text-align: center;
+}
+
+.red {
+    background-color: red;
+}
+
