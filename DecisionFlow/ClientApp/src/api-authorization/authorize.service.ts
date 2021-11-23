@@ -41,8 +41,8 @@ export class AuthorizeService {
   // If you want to enable pop up authentication simply set this flag to false.
 
   private popUpDisabled = true;
-  private userManager: UserManager;
-  private userSubject: BehaviorSubject<IUser | null> = new BehaviorSubject(null);
+  private userManager!: UserManager;
+  private userSubject: BehaviorSubject<IUser | null | any> = new BehaviorSubject(null);
 
   public isAuthenticated(): Observable<boolean> {
     console.log(this.getUser(), 'get user')
@@ -56,7 +56,7 @@ export class AuthorizeService {
       this.userSubject.asObservable());
   }
 
-  public getAccessToken(): Observable<string> {
+  public getAccessToken(): Observable<string | any> {
     return from(this.ensureUserManagerInitialized())
       .pipe(mergeMap(() => from(this.userManager.getUser())),
         map(user => user && user.access_token));
@@ -72,7 +72,7 @@ export class AuthorizeService {
   //    redirect flow.
   public async signIn(state: any): Promise<IAuthenticationResult> {
     await this.ensureUserManagerInitialized();
-    let user: User = null;
+    let user: any = null;
     try {
       user = await this.userManager.signinSilent(this.createArguments());
       this.userSubject.next(user.profile);
@@ -88,7 +88,7 @@ export class AuthorizeService {
         user = await this.userManager.signinPopup(this.createArguments());
         this.userSubject.next(user.profile);
         return this.success(state);
-      } catch (popupError) {
+      } catch (popupError: any) {
         if (popupError.message === 'Popup window closed') {
           // The user explicitly cancelled the login action by closing an opened popup.
           return this.error('The user closed the window.');
@@ -100,7 +100,7 @@ export class AuthorizeService {
         try {
           await this.userManager.signinRedirect(this.createArguments(state));
           return this.redirect();
-        } catch (redirectError) {
+        } catch (redirectError: any) {
           console.log('Redirect authentication error: ', redirectError);
           return this.error(redirectError);
         }
@@ -135,7 +135,7 @@ export class AuthorizeService {
       try {
         await this.userManager.signoutRedirect(this.createArguments(state));
         return this.redirect();
-      } catch (redirectSignOutError) {
+      } catch (redirectSignOutError: any) {
         console.log('Redirect signout error: ', redirectSignOutError);
         return this.error(redirectSignOutError);
       }
@@ -148,7 +148,7 @@ export class AuthorizeService {
       const response = await this.userManager.signoutCallback(url);
       this.userSubject.next(null);
       return this.success(response && response.state);
-    } catch (error) {
+    } catch (error: any) {
       console.log(`There was an error trying to log out '${error}'.`);
       return this.error(error);
     }
@@ -194,7 +194,7 @@ export class AuthorizeService {
     });
   }
 
-  private getUserFromStorage(): Observable<IUser> {
+  private getUserFromStorage(): Observable<IUser | any> {
     return from(this.ensureUserManagerInitialized())
       .pipe(
         mergeMap(() => this.userManager.getUser()),

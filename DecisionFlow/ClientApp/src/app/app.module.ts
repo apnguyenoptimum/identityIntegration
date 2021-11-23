@@ -15,11 +15,15 @@ import { TrafficManagerModule } from './pages/traffic-manager/traffic-manager.mo
 import { SharedModule } from './shared/shared.module';
 import { IconsModule } from './icons/icons.module';
 import { AdminModule } from './pages/admin/admin.module';
-
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { ApiAuthorizationModule } from '../api-authorization/api-authorization.module'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +44,10 @@ import { AdminModule } from './pages/admin/admin.module';
     TrafficManagerModule,
     SharedModule,
     IconsModule,
-    AdminModule
+    AdminModule,
+    ApiAuthorizationModule 
   ],
-  providers: [AuthService, ScreenService, AppInfoService],
+  providers: [AuthService, ScreenService, AppInfoService,  { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
