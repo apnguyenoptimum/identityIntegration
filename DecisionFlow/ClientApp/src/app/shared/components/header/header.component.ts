@@ -7,6 +7,10 @@ import { DxButtonModule } from 'devextreme-angular/ui/button';
 import { DxToolbarModule } from 'devextreme-angular/ui/toolbar';
 import { IconsModule } from 'src/app/icons/icons.module';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthorizeService } from 'src/api-authorization/authorize.service';
+import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +23,8 @@ export class HeaderComponent implements OnInit {
   menuToggle = new EventEmitter<boolean>();
   path: string;
   isHidden = true;
+  public isAuthenticated!: Observable<boolean>;
+  public userName!: Observable<string | any>;
   
   @Input()
   menuToggleEnabled = false;
@@ -38,12 +44,16 @@ export class HeaderComponent implements OnInit {
   {
     text: 'Logout',
     icon: 'runner',
-    onClick: () => {
-      this.authService.logOut();
+    onClick: async () => {
+      const isauthenticated = await this.authorizeService.isAuthenticated().pipe(
+        take(1)
+      ).toPromise();
+
+      console.log(isauthenticated, 'is authenticated')
     }
   }];
 
-  constructor(private authService: AuthService, private router: Router, private location: Location) {
+  constructor(private authService: AuthService, private router: Router, private location: Location, private authorizeService: AuthorizeService) {
     this.path = this.location.path().charAt(1).toUpperCase() + this.location.path().slice(2);
       router.events.subscribe((val) => {
         if(val instanceof NavigationEnd){
@@ -77,6 +87,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.authService.getUser().then((e) => this.user = e.data);
+    this.isAuthenticated = this.authorizeService.isAuthenticated();
+    this.userName = this.authorizeService.getUser().pipe(map(u => u && u.name));
   }
 
   toggleMenu = () => {

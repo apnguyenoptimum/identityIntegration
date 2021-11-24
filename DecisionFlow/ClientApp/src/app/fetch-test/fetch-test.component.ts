@@ -16,6 +16,7 @@ export class FetchTestComponent implements OnInit {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
       this.forecasts = result;
+      console.log(result, 'weather result')
     }, error => console.error(error));
   }
   ngOnInit(): void {
@@ -24,8 +25,8 @@ export class FetchTestComponent implements OnInit {
 }
 
 interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+  Date: string;
+  TemperatureC: number;
+  TemperatureF: number;
+  Summary: string;
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginFormComponent, ResetPasswordFormComponent, CreateAccountFormComponent, ChangePasswordFormComponent } from './shared/components';
 import { AuthGuardService } from './shared/services';
+//devextreme template ^ no logic
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
@@ -23,6 +24,7 @@ import { LoginComponent } from 'src/api-authorization/login/login.component';
 import { LogoutComponent } from 'src/api-authorization/logout/logout.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
+// Identity Template ^
 import { FetchTestComponent } from './fetch-test/fetch-test.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
@@ -46,7 +48,7 @@ const routes: Routes = [
   {
     path: 'overview',
     component: OverviewComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'admin',
@@ -120,12 +122,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: '/'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), 
+  imports: [RouterModule.forRoot(routes), 
     DxDataGridModule, 
     DxFormModule, 
     IconsModule, 
