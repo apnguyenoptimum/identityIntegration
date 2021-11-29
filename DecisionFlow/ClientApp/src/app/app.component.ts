@@ -17,7 +17,6 @@ export class AppComponent  {
     this.authorize.isAuthenticated()
     .subscribe((data) => {
       this.authenticated = data
-      console.log(this.authenticated)
     })
   }
 

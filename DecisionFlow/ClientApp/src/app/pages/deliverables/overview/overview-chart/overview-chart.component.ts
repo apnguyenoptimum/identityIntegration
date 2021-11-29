@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { OverviewService} from '../overview.service';
 import { Workbook } from 'exceljs';
 import { exportDataGrid } from 'devextreme/excel_exporter';
@@ -25,6 +25,7 @@ export class OverviewChartComponent implements OnInit {
   showInfo = true;
   math = Math;
   showNavButtons = true;
+  baseUrl: any;
   readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text: "Display Mode 'compact'", value: 'compact' }];
   readonly allowedPageSizes = [5, 10, 'all'];
 
@@ -38,9 +39,10 @@ export class OverviewChartComponent implements OnInit {
     private overviewService: OverviewService,
     private httpClient: HttpClient,
     private _filterService: FilterService,
-    private router: Router
+    private router: Router,
+    @Inject('BASE_URL') baseUrl: string
      ) { 
-    
+    this.baseUrl = baseUrl; 
   }
   calculateCellValue(data: any) {
     return [data.Title, data.FirstName, data.LastName].join(" ");
@@ -55,7 +57,7 @@ export class OverviewChartComponent implements OnInit {
         theFinal = data
         this.materialDataSource = new CustomStore({
           loadMode: 'raw',
-          key: 'materialID',
+          key: 'MaterialID',
           load: () => {
              return theFinal
           },// load end
@@ -67,7 +69,7 @@ export class OverviewChartComponent implements OnInit {
   }
 
   getGridData(body: any){
-    return this.overviewService.getTopPanelData(this.httpClient, "https://localhost:44300/api/DeliverableView/GetAllGridDataByFilter", body)
+    return this.overviewService.getTopPanelData(this.httpClient, this.baseUrl + "api/DeliverableView/GetAllGridDataByFilter", body)
   }
 
   onCellClick($event: any){

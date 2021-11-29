@@ -19,7 +19,6 @@ export class AuthorizeGuard implements CanActivate {
   }
 
   private handleAuthorization(isAuthenticated: boolean, state: RouterStateSnapshot) {
-    console.log(isAuthenticated,'isAuthenticated')
     if (!isAuthenticated) {
       this.router.navigate(ApplicationPaths.LoginPathComponents, {
         queryParams: {

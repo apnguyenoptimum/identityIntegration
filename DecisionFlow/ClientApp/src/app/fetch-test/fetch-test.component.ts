@@ -14,6 +14,7 @@ export class FetchTestComponent implements OnInit {
   public forecasts!: WeatherForecast[];
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    console.log(baseUrl, 'base url')
     http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
       this.forecasts = result;
       console.log(result, 'weather result')

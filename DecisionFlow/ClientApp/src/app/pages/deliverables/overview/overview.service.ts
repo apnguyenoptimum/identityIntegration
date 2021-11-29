@@ -225,40 +225,39 @@ export class OverviewService {
 
   getTopPanelData(http: any, url: any, body: any){
       
-    let header = new HttpHeaders().set(
-        "x-api-key",
-        "mJwY9uinltILC9XIOpTo" 
-      );
+    // let header = new HttpHeaders().set(
+    //     "x-api-key",
+    //     "mJwY9uinltILC9XIOpTo" 
+    //   );
 
-
-           return http.post(url, body, {headers:header})
+           return http.post(url, body)
           .toPromise()
           .then((res: any) => {
-            let pre = res.result;
+            let pre = res.Result;
             let obj: any = {};
-           
+            console.log(pre, 'the results')
             pre.map((d: any) => {
-              obj.actualShipment = d.actualShipment;
+              obj.actualShipment = d.ActualShipment;
               // obj.projectedShipment = d.projectedShipment;
               obj.projectedShipment = 30;
-              obj.targetShipment = d.targetShipment;
-              if(d.targetShipment >= d.maxShipment){
-                  obj.maxShipment = d.targetShipment;
+              obj.targetShipment = d.TargetShipment;
+              if(d.targetShipment >= d.MaxShipment){
+                  obj.maxShipment = d.TargetShipment;
               } else {
-                  obj.maxShipment = d.maxShipment;
+                  obj.maxShipment = d.MaxShipment;
               }
               obj.state = ""
   
   
-              obj.actualCompletion = d.actualCompletion;
+              obj.actualCompletion = d.ActualCompletion;
               obj.projectedCompletion = 25;
-              obj.targetCompletion = d.targetCompletion;
-              if(d.targetCompletion > d.projectedCompletion){
-                  obj.maxCompletion = d.targetCompletion;
+              obj.targetCompletion = d.TargetCompletion;
+              if(d.targetCompletion > d.ProjectedCompletion){
+                  obj.maxCompletion = d.TargetCompletion;
               } else {
-                  obj.maxCompletion = d.projectedCompletion;
+                  obj.maxCompletion = d.ProjectedCompletion;
               }
-              obj.maxCompletion = d.maxCompletion;
+              obj.maxCompletion = d.MaxCompletion;
       
   
               d.shipments = [obj];
@@ -282,7 +281,7 @@ export class OverviewService {
       loadMode: 'raw',
       key: 'materialID',
       load() {
-        return http.post(url, body, {headers:header})
+        return http.post(url, body)
         .toPromise()
         .then((res: any) => {
           let pre = res.result;

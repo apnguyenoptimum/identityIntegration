@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Inject } from '@angular/core';
 import ArrayStore from "devextreme/data/array_store";
 import * as moment from 'moment';
 import { FilterService } from '../../services/filter.service';
@@ -68,6 +68,7 @@ export class FilterComponent implements OnInit {
     type: 'normal',
     useSubmitBehavior: true,
   };
+  baseUrl: any;
 
   ranges: any = {
     'Qtr 1': [moment().month(0).startOf('month'), moment().month(2).endOf('month')],
@@ -90,7 +91,12 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  constructor( private filterService: FilterService, private httpClient: HttpClient) { 
+  constructor( 
+    private filterService: FilterService, 
+    private httpClient: HttpClient,
+    @Inject('BASE_URL') baseUrl: string
+    ) { 
+      this.baseUrl = baseUrl
     this.saveButtonOptions = {
       text: 'Save Filter',
       onClick: (e:any) => {
@@ -120,6 +126,7 @@ export class FilterComponent implements OnInit {
   ngOnInit(){
 
     this.filterService.currentFilterValue.subscribe((filter: any) => {
+
       this.filterValue = filter;
 
       let customers: any = []
@@ -127,14 +134,14 @@ export class FilterComponent implements OnInit {
       let planners: any = []
 
 
-      this.filterValue.customers.map((d: any) => {
-        customers.push(d.customerID)
+      this.filterValue.Customers.map((d: any) => {
+        customers.push(d.CustomerID)
       });
-      this.filterValue.programs.map((d: any) => {
-        programs.push(d.programID)
+      this.filterValue.Programs.map((d: any) => {
+        programs.push(d.ProgramID)
       });
-      this.filterValue.planners.map((d: any) => {
-        planners.push(d.plannerID)
+      this.filterValue.Planners.map((d: any) => {
+        planners.push(d.PlannerID)
       });
 
       this.selectedCustomers = customers;
@@ -142,7 +149,7 @@ export class FilterComponent implements OnInit {
 
       setTimeout(() => {
         this.changeCustomerDropdown()
-      }, 1000)  
+      }, 1500)  
 
       this.selectedPrograms = programs;
       this.selectedProgramValue = this.selectedPrograms;
@@ -180,14 +187,14 @@ export class FilterComponent implements OnInit {
     }
 
     this.filterService.getAllFilters().subscribe((filters: any) => {
-      console.log(filters, 'all filters')
-      this.allFilters = filters.result
-      this.filteredDataset = filters.result.filterDataSet
+
+      this.allFilters = filters.Result
+      this.filteredDataset = filters.Result.FilterDataSet
       // console.log(filters.result)
     })
-    this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4")
-    this.programDataSource = this.filterService.getProgramFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4" )
-    this.plannerDataSource = this.filterService.getPlannerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4" )
+    this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
+    this.programDataSource = this.filterService.getProgramFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4" )
+    this.plannerDataSource = this.filterService.getPlannerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4" )
     
     // console.log(this.customerDataSource, 'the source customer')
    
@@ -209,12 +216,14 @@ filterDataSource = new ArrayStore({
 });
 
  isTotalFilter(){
-   console.log(this.allFilters, this.selectedCustomers)
-   if(this.allFilters.customers.length - 1 == this.selectedCustomers.length){
-     this.isMaxFilter = true;
-   } else {
-     this.isMaxFilter = false;
-   }
+  if(this.allFilters.length != 0){
+    if(this.allFilters.Customers.length - 1 == this.selectedCustomers.length){
+      this.isMaxFilter = true;
+    } else {
+      this.isMaxFilter = false;
+    }
+  }
+ 
  }
 
  toggleDefault() {
@@ -246,7 +255,6 @@ filterDataSource = new ArrayStore({
     let names: any = []
       this.selectedCustomerValue =  this.selectedCustomers;
       this.isTotalFilter()
-    console.log(this.selectedCustomers)
       if(this.selectedCustomerValue.length == 0){
         this.customerTitle = "CUSTOMERS"
       } else {
@@ -255,8 +263,8 @@ filterDataSource = new ArrayStore({
 
       customersRaw.map((obj: any) => {
         this.selectedCustomers.map((id: number) => {
-          if(id == obj.customerID){
-            names.push(obj.customerName)
+          if(id == obj.CustomerID){
+            names.push(obj.CustomerName)
           }
         })
       } )
@@ -268,27 +276,26 @@ filterDataSource = new ArrayStore({
   changeProgramDropdown() {
     let programRaw = this.programDataSource.__rawData;
     let names: any = []
-    console.log(programRaw)
 
     let customers: number[] = []
     this.selectedProgramValue = this.selectedPrograms;
     let filteredSet = this.filteredDataset.filter((dataSet: any) => {
-      return this.selectedPrograms.includes(dataSet.programID)
+      return this.selectedPrograms.includes(dataSet.ProgramID)
     })
 
     filteredSet.map((set: any) => {
-      if(!customers.includes(set.customerID)){
-        customers.push(set.customerID)
+      if(!customers.includes(set.CustomerID)){
+        customers.push(set.CustomerID)
       }
     })
 
     // filter customers based on program selection
 
     let filteredCustomers = this.customerDataSource.__rawData.filter((dataSet: any) => {
-      return customers.includes(dataSet.customerID)
+      return customers.includes(dataSet.CustomerID)
     })
     this.customerDataSource.__rawData = this.customerDataSource.__rawData.filter((dataSet: any) => {
-      return customers.includes(dataSet.customerID)
+      return customers.includes(dataSet.CustomerID)
     })
     this.globalPrograms = filteredCustomers;
 
@@ -297,20 +304,20 @@ filterDataSource = new ArrayStore({
   //filter customers based on program and planner selection, if planners are selected
       filteredCustomers = filteredCustomers.filter((dataSet: any) => {
   
-        return !this.globalPlanners.includes(dataSet.customerID)
+        return !this.globalPlanners.includes(dataSet.CustomerID)
       })
       this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-        "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+        this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
          filteredCustomers
         )
     } else {
       if(this.globalPlanners.length > 0){
         this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-          "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+          this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
            this.globalPlanners
           )
       } else {
-        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1")
+        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
       }
     }
 
@@ -324,15 +331,14 @@ filterDataSource = new ArrayStore({
 
     programRaw.map((obj: any) => {
       this.selectedPrograms.map((id: number) => {
-        if(id == obj.programID){
-          names.push(obj.programName)
+        if(id == obj.ProgramID){
+          names.push(obj.ProgramName)
         }
       })
     } )
 
     this.programNames = names
 
-    console.log(this.selectedCustomerValue, '<-- selected customer value', this.selectedCustomers)
   }
   changePlannerDropdown() {
     let plannerRaw = this.plannerDataSource.__rawData;
@@ -341,39 +347,38 @@ filterDataSource = new ArrayStore({
     let customers: number[] = []
     this.selectedPlannerValue = this.selectedPlanners;
     let filteredSet = this.filteredDataset.filter((dataSet: any) => {
-      return this.selectedPlanners.includes(dataSet.plannerID)
+      return this.selectedPlanners.includes(dataSet.PlannerID)
     })
 
     filteredSet.map((set: any) => {
-      if(!customers.includes(set.customerID)){
-        customers.push(set.customerID)
+      if(!customers.includes(set.CustomerID)){
+        customers.push(set.CustomerID)
       }
     })
   // filter customers based on planner program selection
     let filteredCustomers = this.customerDataSource.__rawData.filter((dataSet: any) => {
-      return customers.includes(dataSet.customerID)
+      return customers.includes(dataSet.CustomerID)
     })
 
     this.customerDataSource.__rawData = this.customerDataSource.__rawData.filter((dataSet: any) => {
-      return customers.includes(dataSet.customerID)
+      return customers.includes(dataSet.CustomerID)
     })
 
-    console.log(filteredCustomers)
     this.globalPlanners = filteredCustomers;
     if(customers.length > 0 ){
     //filter customers based on program and planner selection, if programs are selected
       this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-        "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+        this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
          filteredCustomers
         )
     } else {
       if(this.globalPrograms.length > 0 ){
         this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-          "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+          this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
            this.globalPrograms
           )
       } else {
-        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1")
+        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
       }
     }
 
@@ -387,7 +392,7 @@ filterDataSource = new ArrayStore({
 
       plannerRaw.map((obj: any) => {
         this.selectedPlanners.map((id: number) => {
-          if(id == obj.plannerID){
+          if(id == obj.PlannerID){
             names.push(obj.plannerName)
           }
         })
@@ -404,18 +409,27 @@ filterDataSource = new ArrayStore({
   
 handleSubmit($event: any){
   console.log("submitted!")
+  let end = null;
+  let start = null;
   if(
     this.selectedCustomers.length == 0
     && this.selectedPrograms.length == 0
     && this.selectedPlanners.length == 0
   ) {
-    this.isDisabled = true;
+    if(this.selectedDates != null){
+      this.isDisabled = true;
+    } else {
+      this.isDisabled = false;
+    }
   } else {
     this.isDisabled = false;
   }
 
-  let end = this.selectedDates.startDate.utc(String, String).toISOString();
-  let start = this.selectedDates.endDate.utc(String, String).toISOString();
+  if (this.selectedDates != null ){
+    end = this.selectedDates.startDate.utc(String, String).toISOString();
+    start = this.selectedDates.endDate.utc(String, String).toISOString();
+  }
+
   // console.log( this.formatFilters(this.selectedCustomers, start, end, this.selectedPrograms, this.selectedPlanners), 'formatted data')
   this.filterService.changeFilterValue( this.formatFilters(this.selectedCustomers,  end, start, this.selectedPrograms, this.selectedPlanners))
 }
@@ -427,14 +441,14 @@ formatFilters(customer: number[], startDate:any, endDate:any, program?: number[]
   let obj: any = {}
 
   customer.map((d) => {
-    obj.customerID = d;
+    obj.CustomerID = d;
     customerArr.push(obj)
     obj = {}
   })
 
   if(program != null){
     program.map((d) => {
-      obj.programID = d;
+      obj.ProgramID = d;
       programArr.push(obj)
       obj = {}
     })
@@ -442,16 +456,16 @@ formatFilters(customer: number[], startDate:any, endDate:any, program?: number[]
 
   if(planner != null){
     planner.map((d) => {
-      obj.plannerID = d;
+      obj.PlannerID = d;
       plannerArr.push(obj)
       obj = {}
     })
   }
 
   let formattedFilter = {
-    customers: customerArr,
-    programs: programArr,
-    planners: plannerArr,
+    Customers: customerArr,
+    Programs: programArr,
+    Planners: plannerArr,
     locationID:  4,
     endDate: endDate,
     startDate: startDate
@@ -474,6 +488,7 @@ clearFilter = () => {
   this.customerTitle = "CUSTOMERS"
   this.plannerTitle = "PLANNERS"
   this.programTitle = "PROGRAMS"
+  this.isDisabled = false; 
 }
 
   

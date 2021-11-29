@@ -16,14 +16,14 @@
                      class="margin"
                      [(value)]="selectedCustomerValue"
                      [(opened)]="isDropDownBoxOpened1"
-                     valueExpr="customerID"
-                     displayExpr="customerName"
+                     valueExpr="CustomerID"
+                     displayExpr="CustomerName"
                      placeholder="Select Customers"
                      [dataSource]="customerDataSource">
                          <dx-data-grid 
                              [dataSource]="customerDataSource"
                              [selection]="{ mode: 'multiple' }"
-                             [columns]="['customerName']"
+                             [columns]="['CustomerName']"
                              [height]="265"
                              [(selectedRowKeys)]="selectedCustomers"
                              (onSelectionChanged)="changeCustomerDropdown()">
@@ -42,14 +42,14 @@
                  class="margin"
                  [(value)]="selectedProgramValue"
                  [(opened)]="isDropDownBoxOpened2"
-                 valueExpr="programID"
-                 displayExpr="programName"
+                 valueExpr="ProgramID"
+                 displayExpr="ProgramName"
                  placeholder="Select Programs"
                  [dataSource]="programDataSource">
                      <dx-data-grid 
                          [dataSource]="programDataSource"
                          [selection]="{ mode: 'multiple' }"
-                         [columns]="['programName']"
+                         [columns]="['ProgramName']"
                          [height]="265"
                          [(selectedRowKeys)]="selectedPrograms"
                          (onSelectionChanged)="changeProgramDropdown()">
@@ -67,14 +67,14 @@
                  class="margin"
                  [(value)]="selectedPlannerValue"
                  [(opened)]="isDropDownBoxOpened3"
-                 valueExpr="plannerID"
-                 displayExpr="plannerName"
+                 valueExpr="PlannerID"
+                 displayExpr="PlannerName"
                  placeholder="Select Planners"
                  [dataSource]="plannerDataSource">
                      <dx-data-grid 
                          [dataSource]="plannerDataSource"
                          [selection]="{ mode: 'multiple' }"
-                         [columns]="['plannerName']"
+                         [columns]="['PlannerName']"
                          [height]="265"
                          [(selectedRowKeys)]="selectedPlanners"
                          (onSelectionChanged)="changePlannerDropdown()">
