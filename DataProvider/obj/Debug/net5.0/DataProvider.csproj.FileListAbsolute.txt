@@ -1,0 +1,34 @@
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\DataProvider.deps.json
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\DataProvider.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\ref\DataProvider.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\DataProvider.pdb
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\DF.Contracts.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\Utilities.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\DF.Contracts.pdb
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\bin\Debug\net5.0\Utilities.pdb
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.csproj.AssemblyReference.cache
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.AssemblyInfoInputs.cache
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.AssemblyInfo.cs
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.csproj.CoreCompileInputs.cache
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.csproj.CopyComplete
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\ref\DataProvider.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\DataProvider\obj\Debug\net5.0\DataProvider.pdb
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\DataProvider.deps.json
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\DataProvider.dll
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\ref\DataProvider.dll
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\DataProvider.pdb
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\DF.Contracts.dll
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\Utilities.dll
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\DF.Contracts.pdb
+C:\Users\optim\source\repos\identityIntegration\DataProvider\bin\Debug\net5.0\Utilities.pdb
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.csproj.AssemblyReference.cache
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.AssemblyInfoInputs.cache
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.AssemblyInfo.cs
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.csproj.CoreCompileInputs.cache
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.csproj.CopyComplete
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.dll
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\ref\DataProvider.dll
+C:\Users\optim\source\repos\identityIntegration\DataProvider\obj\Debug\net5.0\DataProvider.pdb
