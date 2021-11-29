@@ -13,14 +13,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj",
+      "projectUniqueName": "C:\\Users\\optim\\source\\repos\\AngularIdentity\\DF.Contracts\\DF.Contracts.csproj",
       "projectName": "DF.Contracts",
-      "projectPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj",
+      "projectPath": "C:\\Users\\optim\\source\\repos\\AngularIdentity\\DF.Contracts\\DF.Contracts.csproj",
       "packagesPath": "C:\\Users\\optim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\obj\\",
+      "outputPath": "C:\\Users\\optim\\source\\repos\\AngularIdentity\\DF.Contracts\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\optim\\source\\repos\\identityIntegration\\NuGet.Config",
+        "C:\\Users\\optim\\source\\repos\\AngularIdentity\\NuGet.Config",
         "C:\\Users\\optim\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -62,7 +62,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

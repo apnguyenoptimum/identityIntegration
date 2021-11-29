@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DNC0asVkpgxaapIwXaBp/HvD1ON3842W1eqzAA+4Ze03Cms83HuT4VS0v13eMA1vC0GlSb6tYMdy0uY3eL57EQ==",
+  "dgSpecHash": "zmZYhM8Qi5ETpUb8Iv9mzeGJBRv6Pggxqehg55ynFFHfCPQoHiZARvdfH2oGk61xCmyArJTyMCRkCX1FVx24kw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DataProvider\\DataProvider.csproj",
+  "projectFilePath": "C:\\Users\\optim\\source\\repos\\AngularIdentity\\DataProvider\\DataProvider.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\optim\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\optim\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",

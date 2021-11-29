@@ -55,6 +55,7 @@ export class FilterService {
         return http.get(url, {headers:header})
           .toPromise()
           .then((res: any) => {
+            console.log(res, 'customer filters')
             return res.result.customers
           });
       },
