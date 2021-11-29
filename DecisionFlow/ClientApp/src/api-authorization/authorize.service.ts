@@ -113,8 +113,10 @@ export class AuthorizeService {
       await this.ensureUserManagerInitialized();
       const user = await this.userManager.signinCallback(url);
       this.userSubject.next(user && user.profile);
+      console.log(user, 'user')
       return this.success(user && user.state);
     } catch (error) {
+      console.log(error, 'sign in complete')
       return this.error('There was an error signing in.');
     }
   }
@@ -186,9 +188,7 @@ export class AuthorizeService {
     settings.includeIdTokenInSilentRenew = true;
 
     
-      this.userManager = await new UserManager(settings);
-
-      console.log(this.userManager, 'user manager', settings, 'settings')
+      this.userManager = new UserManager(settings);
 
     this.userManager.events.addUserSignedOut(async () => {
       await this.userManager.removeUser();

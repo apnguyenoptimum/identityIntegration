@@ -1,8 +1,6 @@
 
 <ng-container *ngIf="isAuthenticated(); else unauthenticated">
-  <app-nav-menu></app-nav-menu>
   <app-side-nav-outer-toolbar title="{{appInfo.title}}">
-    
     <router-outlet></router-outlet>
     <app-footer>
       <div class="foot">

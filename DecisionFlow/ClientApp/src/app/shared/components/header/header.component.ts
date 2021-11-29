@@ -45,11 +45,9 @@ export class HeaderComponent implements OnInit {
     text: 'Logout',
     icon: 'runner',
     onClick: async () => {
-      const isauthenticated = await this.authorizeService.isAuthenticated().pipe(
-        take(1)
-      ).toPromise();
-
-      console.log(isauthenticated, 'is authenticated')
+   
+      // <a  class="nav-link text-dark" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Logout</a>
+      this.router.navigate(["/authentication/logout"]);
     }
   }];
 
@@ -69,6 +67,10 @@ export class HeaderComponent implements OnInit {
           }
           if(this.path == "Trafficmanager"){
             this.path = "Traffic Manager"
+          }
+          if(this.path.includes("callback")){
+            this.path = "loading"
+            this.router.navigate(["/home"]);
           }
           if(
             this.path == "Overview" ||
