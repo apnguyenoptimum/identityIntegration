@@ -37,8 +37,9 @@ export class HeaderComponent implements OnInit {
   userMenuItems = [{
     text: 'Profile',
     icon: 'user',
-    onClick: () => {
-      this.router.navigate(['/profile']);
+    onClick: async () => {
+      // '["/authentication/profile"]'
+      this.router.navigate(["/authentication/profile"]);
     }
   },
   {
@@ -46,7 +47,7 @@ export class HeaderComponent implements OnInit {
     icon: 'runner',
     onClick: async () => {
    
-      // <a  class="nav-link text-dark" [routerLink]='["/authentication/logout"]' [state]='{ local: true }' title="Logout">Logout</a>
+      // '["/authentication/profile"]'
       this.router.navigate(["/authentication/logout"]);
     }
   }];
