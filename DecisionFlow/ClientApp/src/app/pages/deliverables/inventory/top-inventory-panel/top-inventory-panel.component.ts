@@ -15,11 +15,21 @@ export class TopInventoryPanelComponent implements OnInit {
   math = Math;
   isVisible = true;
   endDate = "Projected"
+  excessValue = 0;
+  gapValue = 0;
   constructor( private _inventoryService: InventoryService, private _filterService: FilterService) { }
 
   ngOnInit() {
     this._inventoryService.currentTopPanelValue.subscribe((value: any) => {
       this.topPanelValues = value;
+      this.gapValue = Math.ceil((this.topPanelValues.gapInventoryCost / this.topPanelValues.targetInventoryCost) * 100)
+      this.excessValue = Math.ceil((this.topPanelValues.excessInventoryCost / this.topPanelValues.targetInventoryCost) * 100)
+      if(isNaN(this.gapValue)){
+        this.gapValue = 0;
+      }
+      if(isNaN(this.excessValue)){
+        this.excessValue = 0;
+      }
     })
 
     this._inventoryService.currentOverInventoriedValue.subscribe((value: any) => {

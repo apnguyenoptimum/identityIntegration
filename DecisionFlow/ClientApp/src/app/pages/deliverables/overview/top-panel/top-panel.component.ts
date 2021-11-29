@@ -174,7 +174,9 @@ export class TopPanelComponent implements OnInit {
           this.isNegative = false;
         }
         this.percentValue =  parseInt(percentage.toFixed(0))
-      
+        if(isNaN(this.percentValue)){
+          this.percentValue = 0;
+        }
 
         this.createBarChartStore(targetSum, this.isUnit)
     })
@@ -258,11 +260,6 @@ export class TopPanelComponent implements OnInit {
   onExporting(e: any) {
     const workbook = new Workbook();
     const worksheet = workbook.addWorksheet('Customers');
- 
-    e.component.columnOption("shortCompletions", "visible", "true")
-    setTimeout(() => {
-      e.component.columnOption("shortCompletions", "visible", "false")
-    }, 3000)
  
     exportDataGrid({
       component: e.component,

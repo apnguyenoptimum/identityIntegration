@@ -23,16 +23,16 @@
 
     <dxi-column cellTemplate="makeSurplus" alignment="right" caption="Make"dataField="makeConstraint"></dxi-column>
     <dxi-column cellTemplate="buySurplus" alignment="right" caption="Buy"dataField="buyConstraint"></dxi-column>
-    <dxi-column alignment="right" caption="Deliverable Part Number"dataField="deliverablePartNumber"></dxi-column>
-    <dxi-column alignment="right" caption="Description"dataField="description"></dxi-column>
-    <dxi-column cellTemplate="lineChart" alignment="right" caption="Weekly Inventory Trend ($)"dataField="targetInventoryCost"></dxi-column>
+    <dxi-column alignment="left" caption="Deliverable Part Number"dataField="deliverablePartNumber"></dxi-column>
+    <dxi-column alignment="left" caption="Description"dataField="description"></dxi-column>
+    <dxi-column cellTemplate="lineChart" alignment="right" caption="Weekly Inventory Trend ($)"dataField="targetInventoryCost" [width]="250"></dxi-column>
     <dxi-column cellTemplate="targetInventory" alignment="right" caption="Target Inventory ($)"dataField="targetInventoryCost"></dxi-column>
     <dxi-column cellTemplate="actualInventory" alignment="right" caption="Actual Inventory ($)"dataField="currentInventoryCost"></dxi-column>
     <dxi-column cellTemplate="excessInventory" alignment="right" caption="Excess Inventory ($)"dataField="excessInventoryCost"></dxi-column>
     <dxi-column cellTemplate="projectedInventory" alignment="right" caption="Projected Inventory ($)" dataField="projectedInventoryCost"></dxi-column>
     <dxi-column cellTemplate="gapInventory" alignment="right" caption="Gap Inventory ($)" dataField="gapInventoryCost"></dxi-column>
     <dxi-column alignment="right" caption="Target Inventory (Units)" dataField="targetInventoryUnit" [visible]="false"></dxi-column>
-    <dxi-column alignment="right" caption="Planner" dataField="planner" [visible]="false"></dxi-column>
+    <dxi-column alignment="left" caption="Planner" dataField="planner" [visible]="false"></dxi-column>
     <dxi-column cellTemplate="targetStock" alignment="right" caption="Target Stock ($)" dataField="rollupTargetStockCost" [visible]="false"></dxi-column>
     <dxi-column cellTemplate="targetWIP" alignment="right" caption="Target WIP ($)" dataField="rollupTargetWIPCost" [visible]="false"></dxi-column>
     <dxi-column cellTemplate="targeInventoryCost" alignment="right" caption="Target WIP ($)" dataField="rollupTargetInventoryCost" [visible]="false"></dxi-column>
@@ -57,15 +57,16 @@
             [height]="30"
             [width]="230">
             </dxo-size>
-              <dxi-series valueField="smp" name="SMP"></dxi-series>
-              <dxi-series valueField="mmp" name="MMP"></dxi-series>
-              <dxi-series valueField="cnstl" name="Cnstl"></dxi-series>
-              <dxi-series valueField="cluster" name="Cluster"></dxi-series>
+            <dxi-series  color="blue" dashStyle="solid" valueField="smp" name="SMP"></dxi-series>
+            <dxi-series  color="blue" dashStyle="dash" valueField="mmp" name="MMP"></dxi-series>
+            <dxi-series  color="red" dashStyle="solid"valueField="cnstl" name="Cnstl"></dxi-series>
+            <!-- <dxi-series valueField="cluster" name="Cluster"></dxi-series> -->
               <dxo-common-series-settings
                 #seriesSettings
                 argumentField="year"
                 [type]="'spline'"
               >
+              <dxo-point [visible]="false"></dxo-point>  
               </dxo-common-series-settings>
         
               <dxo-common-axis-settings>
