@@ -13,7 +13,9 @@
           "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
           "Microsoft.Extensions.DependencyInjection": "5.0.2",
           "Newtonsoft.Json": "13.0.1",
+          "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3",
           "System.Data.SqlClient": "4.8.3",
+          "Unchase.Swashbuckle.AspNetCore.Extensions": "2.6.9",
           "Utilities": "1.0.0"
         },
         "runtime": {
@@ -49,12 +51,6 @@
       "Microsoft.Extensions.Configuration.Abstractions/5.0.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "5.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.20.51904"
-          }
         }
       },
       "Microsoft.Extensions.DependencyInjection/5.0.2": {
@@ -68,35 +64,23 @@
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.20.51904"
-          }
-        }
-      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/5.0.0": {},
       "Microsoft.Extensions.Options/3.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
           "Microsoft.Extensions.Primitives": "5.0.0"
-        },
-        "runtime": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.Options.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.19.46305"
-          }
         }
       },
-      "Microsoft.Extensions.Primitives/5.0.0": {
-        "runtime": {
-          "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.20.51904"
-          }
-        }
-      },
+      "Microsoft.Extensions.Primitives/5.0.0": {},
       "Microsoft.NETCore.Platforms/3.1.0": {},
+      "Microsoft.OpenApi/1.2.3": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.OpenApi.dll": {
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "1.2.3.0"
+          }
+        }
+      },
       "Microsoft.Win32.Registry/4.7.0": {
         "dependencies": {
           "System.Security.AccessControl": "4.7.0",
@@ -145,6 +129,36 @@
           }
         }
       },
+      "Swashbuckle.AspNetCore.Swagger/6.1.5": {
+        "dependencies": {
+          "Microsoft.OpenApi": "1.2.3"
+        },
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.Swagger.dll": {
+            "assemblyVersion": "6.1.5.0",
+            "fileVersion": "6.1.5.0"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerGen/6.1.5": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.Swagger": "6.1.5"
+        },
+        "runtime": {
+          "lib/net5.0/Swashbuckle.AspNetCore.SwaggerGen.dll": {
+            "assemblyVersion": "6.1.5.0",
+            "fileVersion": "6.1.5.0"
+          }
+        }
+      },
+      "Swashbuckle.AspNetCore.SwaggerUI/5.6.3": {
+        "runtime": {
+          "lib/netcoreapp3.0/Swashbuckle.AspNetCore.SwaggerUI.dll": {
+            "assemblyVersion": "5.6.3.0",
+            "fileVersion": "5.6.3.0"
+          }
+        }
+      },
       "System.Data.SqlClient/4.8.3": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
@@ -180,6 +194,17 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
+      "Unchase.Swashbuckle.AspNetCore.Extensions/2.6.9": {
+        "dependencies": {
+          "Swashbuckle.AspNetCore.SwaggerGen": "6.1.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Unchase.Swashbuckle.AspNetCore.Extensions.dll": {
+            "assemblyVersion": "2.6.9.0",
+            "fileVersion": "2.6.9.0"
+          }
+        }
+      },
       "DF.Contracts/1.0.0": {
         "runtime": {
           "DF.Contracts.dll": {}
@@ -261,6 +286,13 @@
       "path": "microsoft.netcore.platforms/3.1.0",
       "hashPath": "microsoft.netcore.platforms.3.1.0.nupkg.sha512"
     },
+    "Microsoft.OpenApi/1.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Nug3rO+7Kl5/SBAadzSMAVgqDlfGjJZ0GenQrLywJ84XGKO0uRqkunz5Wyl0SDwcR71bAATXvSdbdzPrYRYKGw==",
+      "path": "microsoft.openapi/1.2.3",
+      "hashPath": "microsoft.openapi.1.2.3.nupkg.sha512"
+    },
     "Microsoft.Win32.Registry/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -303,6 +335,27 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "Swashbuckle.AspNetCore.Swagger/6.1.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Wp8FlwNCKR/DfxvEkjQdru0l7aUp4/5VLEvejCA8t/SMMcUTP+xw4zvyEjGCBoJ/ETqzQM3y+72iYaEOhBlYOw==",
+      "path": "swashbuckle.aspnetcore.swagger/6.1.5",
+      "hashPath": "swashbuckle.aspnetcore.swagger.6.1.5.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerGen/6.1.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-16M5iJN+hzykkH/vEm4V+47rh8r8KNCOSkIWvP9/+krH3hqVjMlhuop8Xzq6IXckmpXLwxoylLBpiSG9Yy2UUQ==",
+      "path": "swashbuckle.aspnetcore.swaggergen/6.1.5",
+      "hashPath": "swashbuckle.aspnetcore.swaggergen.6.1.5.nupkg.sha512"
+    },
+    "Swashbuckle.AspNetCore.SwaggerUI/5.6.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BPvcPxQRMsYZ3HnYmGKRWDwX4Wo29WHh14Q6B10BB8Yfbbcza+agOC2UrBFA1EuaZuOsFLbp6E2+mqVNF/Je8A==",
+      "path": "swashbuckle.aspnetcore.swaggerui/5.6.3",
+      "hashPath": "swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+    },
     "System.Data.SqlClient/4.8.3": {
       "type": "package",
       "serviceable": true,
@@ -330,6 +383,13 @@
       "sha512": "sha512-ojD0PX0XhneCsUbAZVKdb7h/70vyYMDYs85lwEI+LngEONe/17A0cFaRFqZU+sOEidcVswYWikYOQ9PPfjlbtQ==",
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
+    },
+    "Unchase.Swashbuckle.AspNetCore.Extensions/2.6.9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-psi3x/B6LNia3YcyRW9gYPe6cGv6my2cVF6A3+yhG7Zf4o+3kEG6rQqoSWDmcfgFWe5rMckkmMAQ34hoDeHadw==",
+      "path": "unchase.swashbuckle.aspnetcore.extensions/2.6.9",
+      "hashPath": "unchase.swashbuckle.aspnetcore.extensions.2.6.9.nupkg.sha512"
     },
     "DF.Contracts/1.0.0": {
       "type": "project",

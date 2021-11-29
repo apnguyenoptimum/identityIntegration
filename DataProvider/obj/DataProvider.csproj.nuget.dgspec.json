@@ -65,9 +65,17 @@
               "target": "Package",
               "version": "[13.0.1, )"
             },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.3, )"
+            },
+            "Unchase.Swashbuckle.AspNetCore.Extensions": {
+              "target": "Package",
+              "version": "[2.6.9, )"
             }
           },
           "imports": [
