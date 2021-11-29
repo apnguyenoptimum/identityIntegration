@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "F+7ANekblkz6R3JEsfdP/5eqET+gvCgFRlSEQsH5wzv1aiEIrcu5ayX0N9DxqJraorZdiQkn7WWrw6duz66CmQ==",
+  "dgSpecHash": "eT/M1KMNMNQeL1AZ5VyDWr8lcS1ubfr3rCHITlaS3L2QzlIEVzvwJ7U/10b3GnnXeiZU24N92xWCjBLJu1glEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\Utilities.csproj",
+  "projectFilePath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\Utilities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

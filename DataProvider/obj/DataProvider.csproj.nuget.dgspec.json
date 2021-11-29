@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\optim\\source\\repos\\identityIntegration\\DataProvider\\DataProvider.csproj": {}
+    "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DataProvider\\DataProvider.csproj": {}
   },
   "projects": {
-    "C:\\Users\\optim\\source\\repos\\identityIntegration\\DataProvider\\DataProvider.csproj": {
+    "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DataProvider\\DataProvider.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DataProvider\\DataProvider.csproj",
+        "projectUniqueName": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DataProvider\\DataProvider.csproj",
         "projectName": "DataProvider",
-        "projectPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DataProvider\\DataProvider.csproj",
+        "projectPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DataProvider\\DataProvider.csproj",
         "packagesPath": "C:\\Users\\optim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DataProvider\\obj\\",
+        "outputPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DataProvider\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\optim\\source\\repos\\identityIntegration\\NuGet.Config",
+          "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\NuGet.Config",
           "C:\\Users\\optim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -30,11 +30,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj": {
-                "projectPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj"
+              "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj": {
+                "projectPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj"
               },
-              "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\Utilities.csproj": {
-                "projectPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\Utilities.csproj"
+              "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\Utilities.csproj"
               }
             }
           }
@@ -93,21 +93,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj": {
+    "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj",
         "projectName": "DF.Contracts",
-        "projectPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj",
+        "projectPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DF.Contracts\\DF.Contracts.csproj",
         "packagesPath": "C:\\Users\\optim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\DF.Contracts\\obj\\",
+        "outputPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\DF.Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\optim\\source\\repos\\identityIntegration\\NuGet.Config",
+          "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\NuGet.Config",
           "C:\\Users\\optim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -149,21 +149,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\Utilities.csproj": {
+    "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\Utilities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\Utilities.csproj",
+        "projectUniqueName": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\Utilities.csproj",
         "projectName": "Utilities",
-        "projectPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\Utilities.csproj",
+        "projectPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\Utilities.csproj",
         "packagesPath": "C:\\Users\\optim\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\optim\\source\\repos\\identityIntegration\\Utilities\\obj\\",
+        "outputPath": "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\Utilities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\optim\\source\\repos\\identityIntegration\\NuGet.Config",
+          "C:\\Users\\optim\\source\\repos\\New Angular Identity\\identityIntegration\\NuGet.Config",
           "C:\\Users\\optim\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -205,7 +205,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
