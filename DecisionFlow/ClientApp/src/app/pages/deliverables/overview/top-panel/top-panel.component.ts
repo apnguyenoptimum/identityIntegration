@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OverviewService} from '../overview.service';
 import { DxChartComponent } from 'devextreme-angular';
@@ -48,6 +48,7 @@ export class TopPanelComponent implements OnInit {
   showNavButtons = true;
   readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text: "Display Mode 'compact'", value: 'compact' }];
   readonly allowedPageSizes = [5, 10, 'all'];
+  baseUrl: any;
 
 
 
@@ -55,8 +56,11 @@ export class TopPanelComponent implements OnInit {
     private _overviewService: OverviewService,
     private httpClient: HttpClient,
     private _filterService: FilterService,
-    private router: Router
-     ) { }
+    private router: Router,
+    @Inject('BASE_URL') baseUrl: string
+     ) { 
+       this.baseUrl = baseUrl;
+     }
 
      @HostListener('window:resize', ['$event'])
      onResize() {
@@ -304,7 +308,7 @@ export class TopPanelComponent implements OnInit {
   }
 
   getMaterialData(body: any){
-    return this._overviewService.getTopPanelData(this.httpClient, "https://localhost:44300/api/DeliverableView/GetAllGridDataByFilter", body)
+    return this._overviewService.getTopPanelData(this.httpClient, this.baseUrl + "api/DeliverableView/GetAllGridDataByFilter", body)
   }
 
   

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { OverviewService} from '../overview.service';
 import { Workbook } from 'exceljs';
 import { exportDataGrid } from 'devextreme/excel_exporter';
@@ -27,6 +27,7 @@ export class OverviewChartComponent implements OnInit {
   showNavButtons = true;
   readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text: "Display Mode 'compact'", value: 'compact' }];
   readonly allowedPageSizes = [5, 10, 'all'];
+  baseUrl: any;
 
   customizeTooltip = (pointsInfo: any) => {
     return ({ text: `${pointsInfo.seriesName}: ${parseInt(pointsInfo.originalValue)}
@@ -38,36 +39,37 @@ export class OverviewChartComponent implements OnInit {
     private overviewService: OverviewService,
     private httpClient: HttpClient,
     private _filterService: FilterService,
-    private router: Router
+    private router: Router,
+    @Inject('BASE_URL') baseUrl: string
      ) { 
-    
+    this.baseUrl = baseUrl;
   }
   calculateCellValue(data: any) {
     return [data.Title, data.FirstName, data.LastName].join(" ");
 }
 
   ngOnInit(): void {
-    this._filterService.currentFilterValue.subscribe((filter: any) => {
-      this.filterValue = filter;
-      let theFinal: any
-      this.getGridData(filter).then((data: any) => {
+    // this._filterService.currentFilterValue.subscribe((filter: any) => {
+    //   this.filterValue = filter;
+    //   let theFinal: any
+    //   this.getGridData(filter).then((data: any) => {
             
-        theFinal = data
-        this.materialDataSource = new CustomStore({
-          loadMode: 'raw',
-          key: 'materialID',
-          load: () => {
-             return theFinal
-          },// load end
-        });
-      })
+    //     theFinal = data
+    //     this.materialDataSource = new CustomStore({
+    //       loadMode: 'raw',
+    //       key: 'materialID',
+    //       load: () => {
+    //          return theFinal
+    //       },// load end
+    //     });
+    //   })
     
-    })
+    // })
   
   }
 
   getGridData(body: any){
-    return this.overviewService.getTopPanelData(this.httpClient, "https://localhost:44300/api/DeliverableView/GetAllGridDataByFilter", body)
+    return this.overviewService.getTopPanelData(this.httpClient, this.baseUrl + "api/DeliverableView/GetAllGridDataByFilter", body)
   }
 
   onCellClick($event: any){
