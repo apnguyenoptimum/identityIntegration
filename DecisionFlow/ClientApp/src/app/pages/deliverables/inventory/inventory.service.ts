@@ -39,16 +39,13 @@ export class InventoryService {
 
 
     getGridData(http: any, url: any, body: any) {
-        let header = new HttpHeaders().set(
-          "x-api-key",
-          "mJwY9uinltILC9XIOpTo" 
-        );
+       
 
         return new CustomStore({
           loadMode: 'raw',
           key: 'materialID',
           load:() => {
-            return http.post(url, body, {headers:header})
+            return http.post(url, body)
             .toPromise()
             .then((res: any) => {
               let pre = res.result;

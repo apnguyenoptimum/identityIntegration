@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, Inject } from '@angular/core';
 import ArrayStore from "devextreme/data/array_store";
 import * as moment from 'moment';
 import { FilterService } from '../../services/filter.service';
@@ -68,6 +68,7 @@ export class FilterComponent implements OnInit {
     type: 'normal',
     useSubmitBehavior: true,
   };
+  baseUrl: any;
 
   ranges: any = {
     'Qtr 1': [moment().month(0).startOf('month'), moment().month(2).endOf('month')],
@@ -90,7 +91,8 @@ export class FilterComponent implements OnInit {
     }
   }
 
-  constructor( private filterService: FilterService, private httpClient: HttpClient) { 
+  constructor( private filterService: FilterService, private httpClient: HttpClient,  @Inject('BASE_URL') baseUrl: string) { 
+    this.baseUrl = baseUrl;
     this.saveButtonOptions = {
       text: 'Save Filter',
       onClick: (e:any) => {
@@ -185,9 +187,9 @@ export class FilterComponent implements OnInit {
       this.filteredDataset = filters.result.filterDataSet
       // console.log(filters.result)
     })
-    this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4")
-    this.programDataSource = this.filterService.getProgramFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4" )
-    this.plannerDataSource = this.filterService.getPlannerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4" )
+    this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
+    this.programDataSource = this.filterService.getProgramFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4" )
+    this.plannerDataSource = this.filterService.getPlannerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4" )
     
     // console.log(this.customerDataSource, 'the source customer')
    
@@ -300,17 +302,17 @@ filterDataSource = new ArrayStore({
         return !this.globalPlanners.includes(dataSet.customerID)
       })
       this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-        "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+        this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
          filteredCustomers
         )
     } else {
       if(this.globalPlanners.length > 0){
         this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-          "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+          this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
            this.globalPlanners
           )
       } else {
-        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1")
+        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
       }
     }
 
@@ -363,17 +365,17 @@ filterDataSource = new ArrayStore({
     if(customers.length > 0 ){
     //filter customers based on program and planner selection, if programs are selected
       this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-        "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+        this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
          filteredCustomers
         )
     } else {
       if(this.globalPrograms.length > 0 ){
         this.customerDataSource = this.filterService.getFilteredCustomerFilters(this.httpClient, 
-          "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1",
+          this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4",
            this.globalPrograms
           )
       } else {
-        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, "https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=1")
+        this.customerDataSource = this.filterService.getCustomerFilters(this.httpClient, this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
       }
     }
 

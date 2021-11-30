@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationResultStatus, AuthorizeService } from '../authorize.service';
-import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 import { LogoutActions, ApplicationPaths, ReturnUrlType } from '../api-authorization.constants';
 
 // The main responsibility of this component is to handle the user's logout process.
@@ -25,7 +25,7 @@ export class LogoutComponent implements OnInit {
     const action = this.activatedRoute.snapshot.url[1];
     switch (action.path) {
       case LogoutActions.Logout:
-        if (!!window.history.state.local) {
+        if (true) {
           await this.logout(this.getReturnUrl());
         } else {
           // This prevents regular links to <app>/authentication/logout from triggering a logout

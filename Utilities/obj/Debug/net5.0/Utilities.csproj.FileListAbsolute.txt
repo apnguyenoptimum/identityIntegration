@@ -1,0 +1,36 @@
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\bin\Debug\net5.0\Utilities.deps.json
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\bin\Debug\net5.0\Utilities.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\bin\Debug\net5.0\ref\Utilities.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\bin\Debug\net5.0\Utilities.pdb
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfoInputs.cache
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfo.cs
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\ref\Utilities.dll
+C:\Users\optim\OneDrive - Optimum Consultancy\Documents\GIT\DEV_PMV2_API\PMV2_API\Utilities\obj\Debug\net5.0\Utilities.pdb
+C:\Users\optim\source\repos\identityIntegration\Utilities\bin\Debug\net5.0\Utilities.deps.json
+C:\Users\optim\source\repos\identityIntegration\Utilities\bin\Debug\net5.0\Utilities.dll
+C:\Users\optim\source\repos\identityIntegration\Utilities\bin\Debug\net5.0\ref\Utilities.dll
+C:\Users\optim\source\repos\identityIntegration\Utilities\bin\Debug\net5.0\Utilities.pdb
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfoInputs.cache
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfo.cs
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.dll
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\ref\Utilities.dll
+C:\Users\optim\source\repos\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.pdb
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\bin\Debug\net5.0\Utilities.deps.json
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\bin\Debug\net5.0\Utilities.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\bin\Debug\net5.0\ref\Utilities.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\bin\Debug\net5.0\Utilities.pdb
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.csproj.AssemblyReference.cache
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfoInputs.cache
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.AssemblyInfo.cs
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.csproj.CoreCompileInputs.cache
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\ref\Utilities.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\Utilities\obj\Debug\net5.0\Utilities.pdb

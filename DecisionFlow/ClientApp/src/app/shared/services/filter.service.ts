@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import CustomStore from 'devextreme/data/custom_store';
 import { BehaviorSubject } from 'rxjs';
@@ -25,13 +25,15 @@ export class FilterService {
     }
   )
   currentFilterValue = this.filterValue.asObservable();
+  baseUrl: any;
 
   changeFilterValue(filter: any){
     this.filterValue.next(filter)
     console.log(this.filterValue, 'filter value in service')
   }
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient, @Inject('BASE_URL') baseUrl: string) { 
+    this.baseUrl = baseUrl; 
   }
 
   getAllFilters(){
@@ -39,7 +41,7 @@ export class FilterService {
       "x-api-key",
       "mJwY9uinltILC9XIOpTo" 
     );
-    return this.httpClient.get("https://localhost:44300/api/ApplicationFilter/GetAllFilters?locationID=4", {headers:header})
+    return this.httpClient.get(this.baseUrl + "api/ApplicationFilter/GetAllFilters?locationID=4")
   }
 
   getCustomerFilters(http: any, url: any) {
@@ -52,7 +54,7 @@ export class FilterService {
       loadMode: 'raw',
       key: 'customerID',
       load() {
-        return http.get(url, {headers:header})
+        return http.get(url)
           .toPromise()
           .then((res: any) => {
             return res.result.customers
@@ -71,7 +73,7 @@ export class FilterService {
       loadMode: 'raw',
       key: 'customerID',
       load() {
-        return http.get(url, {headers:header})
+        return http.get(url)
           .toPromise()
           .then((res: any) => {
             return filteredCustomer
@@ -91,7 +93,7 @@ export class FilterService {
       loadMode: 'raw',
       key: 'programID',
       load() {
-        return http.get(url, {headers:header})
+        return http.get(url)
           .toPromise()
           .then((res: any) => {
             return res.result.programs
@@ -109,7 +111,7 @@ export class FilterService {
       loadMode: 'raw',
       key: 'plannerID',
       load() {
-        return http.get(url, {headers:header})
+        return http.get(url)
           .toPromise()
           .then((res: any) => {
             return res.result.planners

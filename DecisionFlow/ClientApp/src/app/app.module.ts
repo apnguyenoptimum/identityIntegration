@@ -17,13 +17,16 @@ import { IconsModule } from './icons/icons.module';
 import { AdminModule } from './pages/admin/admin.module';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ApiAuthorizationModule } from '../api-authorization/api-authorization.module'
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
+import { FetchTestComponent } from './fetch-test/fetch-test.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    FetchTestComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,12 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
     AdminModule,
     ApiAuthorizationModule 
   ],
-  providers: [AuthService, ScreenService, AppInfoService,  { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }],
+  providers: [AuthService, ScreenService, AppInfoService,  { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true },  { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function getBaseUrl() {
+  return document.getElementsByTagName('base')[0].href;
+}
+

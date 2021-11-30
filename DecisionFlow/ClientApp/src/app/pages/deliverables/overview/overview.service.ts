@@ -231,7 +231,7 @@ export class OverviewService {
       );
 
 
-           return http.post(url, body, {headers:header})
+           return http.post(url, body)
           .toPromise()
           .then((res: any) => {
             let pre = res.result;
@@ -282,7 +282,7 @@ export class OverviewService {
       loadMode: 'raw',
       key: 'materialID',
       load() {
-        return http.post(url, body, {headers:header})
+        return http.post(url, body)
         .toPromise()
         .then((res: any) => {
           let pre = res.result;

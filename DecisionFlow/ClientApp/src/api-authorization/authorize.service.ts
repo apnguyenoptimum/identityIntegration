@@ -45,7 +45,10 @@ export class AuthorizeService {
   private userSubject: BehaviorSubject<IUser | null | any> = new BehaviorSubject(null);
 
   public isAuthenticated(): Observable<boolean> {
-    console.log(this.getUser(), 'get user')
+
+    // console.log('is Authenticated service')
+    // this.getUser().pipe(map(u => !!u)).subscribe((d) => console.log(d, 'get user value**'))
+    this.getUser().pipe(map(u => console.log(u, '----- > !!', !!u)))
     return this.getUser().pipe(map(u => !!u));
   }
 
@@ -79,7 +82,6 @@ export class AuthorizeService {
       return this.success(state);
     } catch (silentError) {
       // User might not be authenticated, fallback to popup authentication
-      console.log('Silent authentication error: ', silentError);
 
       try {
         if (this.popUpDisabled) {
@@ -93,7 +95,6 @@ export class AuthorizeService {
           // The user explicitly cancelled the login action by closing an opened popup.
           return this.error('The user closed the window.');
         } else if (!this.popUpDisabled) {
-          console.log('Popup authentication error: ', popupError);
         }
 
         // PopUps might be blocked by the user, fallback to redirect
@@ -101,7 +102,6 @@ export class AuthorizeService {
           await this.userManager.signinRedirect(this.createArguments(state));
           return this.redirect();
         } catch (redirectError: any) {
-          console.log('Redirect authentication error: ', redirectError);
           return this.error(redirectError);
         }
       }
@@ -113,9 +113,10 @@ export class AuthorizeService {
       await this.ensureUserManagerInitialized();
       const user = await this.userManager.signinCallback(url);
       this.userSubject.next(user && user.profile);
+      console.log(user, 'user')
       return this.success(user && user.state);
     } catch (error) {
-      console.log('There was an error signing in: ', error);
+      console.log(error, 'sign in complete')
       return this.error('There was an error signing in.');
     }
   }
@@ -131,7 +132,6 @@ export class AuthorizeService {
       this.userSubject.next(null);
       return this.success(state);
     } catch (popupSignOutError) {
-      console.log('Popup signout error: ', popupSignOutError);
       try {
         await this.userManager.signoutRedirect(this.createArguments(state));
         return this.redirect();
@@ -174,10 +174,10 @@ export class AuthorizeService {
     if (this.userManager !== undefined) {
       return;
     }
-    console.log(this.userManager, 'user manager')
-    const response = await fetch(ApplicationPaths.ApiAuthorizationClientConfigurationUrl);
-    console.log(response, 'response****', ApplicationPaths.ApiAuthorizationClientConfigurationUrl)
-    console.log(window.location.origin, window.location.host)
+
+    //to do - Prastut
+    const response = await fetch(ApplicationPaths.ApiAuthorizationClientConfigurationUrl)
+   
     if (!response.ok) {
    
       throw new Error(`Could not load settings for '${ApplicationName}'`);
@@ -186,7 +186,9 @@ export class AuthorizeService {
     const settings: any = await response.json();
     settings.automaticSilentRenew = true;
     settings.includeIdTokenInSilentRenew = true;
-    this.userManager = new UserManager(settings);
+
+    
+      this.userManager = new UserManager(settings);
 
     this.userManager.events.addUserSignedOut(async () => {
       await this.userManager.removeUser();
