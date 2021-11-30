@@ -37,8 +37,6 @@ const routes: Routes = [
   { path: ApplicationPaths.LogOut, component: LogoutComponent },
   { path: ApplicationPaths.LoggedOut, component: LogoutComponent },
   { path: ApplicationPaths.LogOutCallback, component: LogoutComponent },
-  { path: 'fetch-data', component: FetchTestComponent, canActivate: [AuthorizeGuard] },
-  { path: 'weatherforecast', component: FetchTestComponent, canActivate: [AuthorizeGuard]   },
   {
     path: 'overview',
     component: OverviewComponent,
