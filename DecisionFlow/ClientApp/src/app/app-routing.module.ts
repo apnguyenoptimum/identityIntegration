@@ -5,7 +5,6 @@ import { AuthGuardService } from './shared/services';
 //devextreme template ^ no logic
 import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { TasksComponent } from './pages/tasks/tasks.component';
 import { DxDataGridModule, DxFormModule } from 'devextreme-angular';
 import { OverviewComponent } from './pages/deliverables/overview/overview.component';
 import { ExplodedComponent } from './pages/exploded/exploded.component';
@@ -41,11 +40,6 @@ const routes: Routes = [
   { path: 'fetch-data', component: FetchTestComponent, canActivate: [AuthorizeGuard] },
   { path: 'weatherforecast', component: FetchTestComponent, canActivate: [AuthorizeGuard]   },
   {
-    path: 'tasks',
-    component: TasksComponent,
-    canActivate: [ AuthGuardService ]
-  },
-  {
     path: 'overview',
     component: OverviewComponent,
     canActivate: [ AuthorizeGuard ]
@@ -53,47 +47,47 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'map',
     component: MapComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'trafficmanager',
     component: TrafficManagerComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'inventory',
     component: InventoryComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'spf',
     component: SpfComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'performance',
     component: PerformanceComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'charts',
     component: ChartsComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'exploded',
     component: ExplodedComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'home',
@@ -103,22 +97,22 @@ const routes: Routes = [
   {
     path: 'login-form',
     component: LoginFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'reset-password',
     component: ResetPasswordFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'create-account',
     component: CreateAccountFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: 'change-password/:recoveryCode',
     component: ChangePasswordFormComponent,
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthorizeGuard ]
   },
   {
     path: '**',
@@ -143,6 +137,6 @@ const routes: Routes = [
   ],
   providers: [AuthGuardService,  { provide: HTTP_INTERCEPTORS, useClass: AuthorizeInterceptor, multi: true }],
   exports: [RouterModule],
-  declarations: [HomeComponent, ProfileComponent, TasksComponent, FetchDataComponent]
+  declarations: [HomeComponent, ProfileComponent, FetchDataComponent]
 })
 export class AppRoutingModule { }
