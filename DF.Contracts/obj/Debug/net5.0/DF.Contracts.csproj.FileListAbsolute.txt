@@ -22,3 +22,15 @@ C:\Users\optim\source\repos\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF
 C:\Users\optim\source\repos\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.dll
 C:\Users\optim\source\repos\identityIntegration\DF.Contracts\obj\Debug\net5.0\ref\DF.Contracts.dll
 C:\Users\optim\source\repos\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.pdb
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\bin\Debug\net5.0\DF.Contracts.deps.json
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\bin\Debug\net5.0\DF.Contracts.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\bin\Debug\net5.0\ref\DF.Contracts.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\bin\Debug\net5.0\DF.Contracts.pdb
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.csproj.AssemblyReference.cache
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.AssemblyInfoInputs.cache
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.AssemblyInfo.cs
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\ref\DF.Contracts.dll
+C:\Users\optim\source\repos\New Angular Identity\identityIntegration\DF.Contracts\obj\Debug\net5.0\DF.Contracts.pdb

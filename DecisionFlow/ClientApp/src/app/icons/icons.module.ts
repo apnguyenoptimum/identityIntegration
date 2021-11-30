@@ -16,6 +16,7 @@ import { AdminIconComponent } from './components/admin-icon/admin-icon.component
 import { HeaderLogoComponent } from './components/header-logo/header-logo.component';
 import { UpIconComponent } from './components/up-icon/up-icon.component';
 import { DownIconComponent } from './components/down-icon/down-icon.component';
+import { RedUpIconComponent } from './components/red-up-icon/red-up-icon.component';
 
 
 
@@ -36,7 +37,8 @@ import { DownIconComponent } from './components/down-icon/down-icon.component';
     AdminIconComponent,
     HeaderLogoComponent,
     UpIconComponent,
-    DownIconComponent
+    DownIconComponent,
+    RedUpIconComponent
   ],
   exports: [
     DeliverablesIconComponent,

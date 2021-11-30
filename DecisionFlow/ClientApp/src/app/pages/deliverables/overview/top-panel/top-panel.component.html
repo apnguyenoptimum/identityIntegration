@@ -211,9 +211,9 @@
     <dxi-column cellTemplate="unitShort" caption="Unit Short Shipment" dataField="shortShipment" [width]="100" [visible]="false"></dxi-column>
     <dxi-column cellTemplate="make"  caption="Make Shortages" dataField="makePartCountCausingShortage" [width]="100"></dxi-column>
     <dxi-column cellTemplate="buy" caption="Buy Shortages"dataField="buyPartCountCausingShortage" [width]="100"></dxi-column>
-    <dxi-column cellTemplate="shipmentsCompletions"  caption="Shipments/Completions (Units)" dataField="shipments" [width]="250" ></dxi-column>
+    <dxi-column cellTemplate="shipmentsCompletions"  caption="Shipments/Completions (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
     <dxi-column cellTemplate="shipments"  caption="Shipments (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
-    <dxi-column cellTemplate="completions"  caption="Completions (Units)" dataField="shipments" [width]="250" [visible]="false"></dxi-column>
+    <dxi-column cellTemplate="completions"  caption="Completions (Units)" dataField="shipments" [width]="250"></dxi-column>
     <dxi-column cellTemplate="actualRevenue" caption="Actual Revenue ($)" dataField="actualRevenue" alignment="right"></dxi-column>
     <dxi-column cellTemplate="projectedRevenue" caption="Projected Revenue ($)" dataField="projectedRevenue" alignment="right"></dxi-column>
     <dxi-column cellTemplate="targetRevenue" caption="Target Revenue ($)" dataField="targetRevenue" alignment="right"></dxi-column>
@@ -224,8 +224,8 @@
     <dxi-column alignment="right" caption="Actual Completions" dataField="actualCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
     <dxi-column alignment="right" caption="Prejected Completions" dataField="projectedCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
     <dxi-column alignment="right" caption="Target Completions" dataField="targetCompletion" [width]="205"  [width]="100" [visible]="false" ></dxi-column>
-    <dxi-column alignment="right" caption="Deliverable"dataField="deliverable"></dxi-column>
-    <dxi-column alignment="right" caption="Description"dataField="description"></dxi-column>
+    <dxi-column alignment="left" caption="Deliverable"dataField="deliverable"></dxi-column>
+    <dxi-column alignment="left" caption="Description"dataField="description"></dxi-column>
     <dxi-column cellTemplate="forecastRevenue" caption="Forecast Revenue ($)"dataField="forecastRevenue" alignment="right"></dxi-column>
     <dxi-column caption="Average Unit Sold Price" dataField="averageUnitSoldPrice" [visible]="false"></dxi-column>
     <dxi-column caption="Planner(s)" dataField="planner" [visible]="false"></dxi-column>
@@ -279,7 +279,9 @@
        
         <dxi-series  color="blue" valueField="actualCompletion" name="Actual Completions"  stack="completion"></dxi-series>
         <dxi-series id="projected"  color="rgba(104, 129, 239, 0.4)"   dashStyle="dash"  stack="completion" valueField="projectedCompletion" name="Projected Completions"></dxi-series>
-        <dxi-value-axis position="left">
+        <dxi-value-axis [visible]="false" position="left">
+          <dxo-tick [visible]="false">
+          </dxo-tick>
           <dxi-constant-line
           [width]="2"
           [value]="d.data.shipments[0].targetShipment"
@@ -325,7 +327,9 @@
         <dxi-series  color="green" valueField="actualShipment" name="Actual Shipments" stack="shipment"></dxi-series>
         <dxi-series id="projected"  color="rgba(57, 225, 65, 0.4)"   dashStyle="dash"  stack="shipment" valueField="projectedShipment" name="Project Shipment"></dxi-series>
        
-        <dxi-value-axis position="left">
+        <dxi-value-axis [visible]="false" position="left">
+          <dxo-tick [visible]="false">
+          </dxo-tick>
           <dxi-constant-line
           [width]="2"
           [value]="d.data.shipments[0].targetShipment"
@@ -362,7 +366,9 @@
         <dxi-series  color="blue" valueField="actualCompletion" name="Actual Completions"  stack="completion"></dxi-series>
         <dxi-series id="projected"  color="rgba(104, 129, 239, 0.4)"   dashStyle="dash"  stack="completion" valueField="projectedCompletion" name="Projected Completions"></dxi-series>
 
-        <dxi-value-axis position="left">
+        <dxi-value-axis [visible]="false" position="left">
+          <dxo-tick [visible]="false">
+          </dxo-tick>
           <dxi-constant-line
           [width]="2"
           [value]="d.data.shipments[0].targetCompletion"

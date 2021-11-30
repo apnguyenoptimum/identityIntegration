@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.2%;
+    // padding: 1.2%;
 }
 
 .border {
@@ -72,6 +72,7 @@ h1 {
 
 .top-text {
     font-size: 170%;
+    font-weight: 500;
 }
 
 .mid-text {
@@ -217,5 +218,9 @@ a {
     // border: 3px solid #3636401f;
     margin-left: 2%;
     margin-bottom: 2%;
+}
+
+.green{
+    background-color: rgb(57 225 65 / 40%);
 }
 

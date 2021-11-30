@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { InventoryService } from '../inventory.service';
 import { FilterService } from 'src/app/shared/services/filter.service';
 import { HttpClient } from '@angular/common/http';
@@ -58,9 +58,16 @@ export class InventoryChartComponent implements OnInit {
   showNavButtons = true;
   readonly displayModes = [{ text: "Display Mode 'full'", value: 'full' }, { text: "Display Mode 'compact'", value: 'compact' }];
   readonly allowedPageSizes = [5, 10, 'all'];
+  baseUrl: any;
 
 
-  constructor( private _filterService: FilterService, private httpClient: HttpClient, private _inventoryService: InventoryService) { 
+  constructor(
+    private _filterService: FilterService, 
+    private httpClient: HttpClient, 
+    private _inventoryService: InventoryService,
+    @Inject('BASE_URL') baseUrl: string
+    ) {
+      this.baseUrl = baseUrl;
   }
   calculateCellValue(data: any) {
     return [data.Title, data.FirstName, data.LastName].join(" ");
@@ -75,7 +82,7 @@ export class InventoryChartComponent implements OnInit {
   }
 
   getGridData(body: any){
-    return this._inventoryService.getGridData(this.httpClient, "https://localhost:44300/api/DeliverableView/GetInventoryViewDataByFilter", body)
+    return this._inventoryService.getGridData(this.httpClient, this.baseUrl + "api/DeliverableView/GetInventoryViewDataByFilter", body)
   }
 
 }
